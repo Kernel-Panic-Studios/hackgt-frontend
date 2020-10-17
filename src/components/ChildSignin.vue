@@ -58,7 +58,7 @@ import axios from "axios";
 
 const linksData = [
   {
-    title: "Organisation",
+    title: "Organization",
     caption: "/organization",
     icon: "school",
     link: "/organization"
@@ -110,6 +110,8 @@ export default {
             console.log(this.data.type);
             this.$store.commit("user/setUserType", this.data.type);
             this.$store.commit("user/setUserName", this.data.name);
+            this.$q.localStorage.set('userType', this.data.type);
+            this.$q.localStorage.set('userName', this.data.name);
             // this.$store.commit("user/setUserEmail", this.data.email);
             console.log(this.data.type);
             this.$router.push("/" + this.data.type);

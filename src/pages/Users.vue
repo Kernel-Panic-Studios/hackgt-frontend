@@ -2,7 +2,6 @@
   <q-page class="flex flex-center">
     <h1>{{ name }}</h1>
     <h2>This is where families/organizations see the children</h2>
-    <h3>{{ route.fullPath }}</h3>
     <div v-if="type == 'organization'">
       <InternalLink
         v-for="link in organizationLinks"
@@ -17,7 +16,7 @@
           :key="index"
           class="example-item"
         >
-          <UserCard :name="child.name" :id="child.id" />
+          <UserCard :type="type" :name="child.name" :id="child.id" />
           <!-- <q-card class="q-ma-sm">
             <img src="https://cdn.quasar.dev/img/mountains.jpg" />
 
@@ -67,8 +66,12 @@ export default {
   },
   methods: {},
   created: function() {
+    if (this.$q.localStorage.getItem('type') == 'child') {
+      this.$q.localStorage.set('type', this.$q.localStorage.getItem('prevType'));
+      this.$q.localStorage.set('child', {});
+    }
     axios
-      .get("https://hackgt.azurewebsites.net/organization/abc@123.com")
+      .get("https://hackgt.azurewebsites.net/" + this.$q.localStorage.getItem('type') + "/" + this.$q.localStorage.getItem(this.$q.localStorage.getItem('type')).email)
       .then(response => {
         this.children = response.data.children;
         console.log(this.children);
@@ -80,7 +83,7 @@ export default {
   computed: {
     type: {
       get() {
-        return this.$store.state.user.type;
+        return this.$q.localStorage.getItem('type');
       }
     }
   }

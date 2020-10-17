@@ -112,7 +112,8 @@ export default {
   computed: {
     name: {
       get() {
-        return this.$store.state.user.name;
+        // return this.$store.state.user.name;
+        return this.$q.localStorage.getItem(this.$q.localStorage.getItem('type')).name;
       }
     }
   }

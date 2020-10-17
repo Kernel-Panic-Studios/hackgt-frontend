@@ -27,9 +27,9 @@ const familyOptions = [
   },
   {
     title: "Chat",
-    caption: "/.",
+    caption: "/chat",
     icon: "house",
-    link: "/"
+    link: "/chat"
   },
   {
     title: "Upload",
@@ -60,9 +60,9 @@ const userOptions = [
   },
   {
     title: "Chat",
-    caption: "/.",
+    caption: "/chat",
     icon: "house",
-    link: "/"
+    link: "/chat"
   },
   {
     title: "Upload",

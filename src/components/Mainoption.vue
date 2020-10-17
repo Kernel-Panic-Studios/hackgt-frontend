@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "Mainoption",
+  name: "MainOption",
   props: {
     title: {
       type: String,

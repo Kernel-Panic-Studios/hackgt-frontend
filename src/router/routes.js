@@ -14,6 +14,8 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Users.vue') },
       { path: '/child', component: () => import('pages/Index.vue') },
+      { path: '/chat', component: () => import('pages/Chat.vue') },
+      { path: '/feed', component: () => import('pages/Feed.vue') },
     ]
   },
   {
@@ -30,6 +32,8 @@ const routes = [
     component: () => import('layouts/Dashboard.vue'),
     children: [
       { path: '', component: () => import('pages/Users.vue') },
+      { path: '/chat', component: () => import('pages/Chat.vue') },
+      { path: '/feed', component: () => import('pages/Feed.vue') },
     ]
   },
   {

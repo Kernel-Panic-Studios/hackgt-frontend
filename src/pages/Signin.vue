@@ -58,7 +58,7 @@ import axios from "axios";
 
 const linksData = [
   {
-    title: "Organisation",
+    title: "Organization",
     caption: "/organization",
     icon: "school",
     link: "/organization"
@@ -83,13 +83,12 @@ export default {
   data() {
     return {
       internalLinks: linksData,
-      type: this.$store.state.type,
-      email: "abc@123.com",
-      password: "abc123",
-      enteredtype: "organization",
-      // email: "joe@statefarm.com",
-      // password: "Joe",
-      // enteredtype: "family",
+      // email: "abc@123.com",
+      // password: "abc123",
+      // enteredtype: "organization",
+      email: "joe@statefarm.com",
+      password: "Joe",
+      enteredtype: "family",
       accept: false
     };
   },
@@ -108,10 +107,8 @@ export default {
             console.log("fail");
           } else {
             console.log(this.data.type);
-            this.$store.commit("user/setUserType", this.data.type);
-            this.$store.commit("user/setUserName", this.data.name);
-            this.$store.commit("user/setUserEmail", this.data.email);
-            console.log(this.data.type);
+            this.$q.localStorage.set('type', this.enteredtype);
+            this.$q.localStorage.set(this.enteredtype, this.data);
             this.$router.push("/" + this.data.type);
           }
         })

@@ -66,10 +66,10 @@ import axios from 'axios'
 
 const linksData = [
   {
-    title: "Organisation",
+    title: "Organization",
     caption: "/organization",
     icon: "school",
-    link: "/organisation"
+    link: "/organization"
   },
   {
     title: "Family",
@@ -91,7 +91,7 @@ export default {
   data() {
     return {
       internalLinks: linksData,
-      type: this.$store.state.type,
+      type: this.$q.localStorage.geItem('type'),
       email: "abc@12345.com",
       name: "abc12345",
       password: "abc12345",
@@ -118,10 +118,8 @@ export default {
           if ("error" in this.data) {
             console.log("fail");
           } else {
-            console.log(this.data.type);
-            this.$store.commit("user/setUserType", this.data.type);
-            this.$store.commit("user/setUserName", this.data.name);
-            this.$store.commit("user/setUserEmail", this.data.email);
+            this.$q.localStorage.set('type', this.data.type);
+            this.$q.localStorage.set(this.data.type, this.data);
             console.log(this.data.type);
             this.$router.push('/' + this.data.type)
           }
