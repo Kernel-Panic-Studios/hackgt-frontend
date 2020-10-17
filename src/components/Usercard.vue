@@ -12,7 +12,9 @@
 
     <q-card-actions>
       <q-btn flat @click="viewChild">View Child</q-btn>
-      <q-btn v-if="type == 'organization'" flat @click="expanded = !expanded">Log In</q-btn>
+      <q-btn v-if="type == 'organization'" flat @click="expanded = !expanded"
+        >Log In</q-btn
+      >
     </q-card-actions>
 
     <div v-show="expanded">
@@ -30,7 +32,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   name: "UserCard",
@@ -59,8 +61,8 @@ export default {
       axios
         .post("https://hackgt.azurewebsites.net/login", {
           id: this.newId,
-          organization: this.$q.localStorage.getItem('organization').email,
-          type: 'child'
+          organization: this.$q.localStorage.getItem("organization").email,
+          type: "child"
         })
         .then(response => {
           this.data = response.data;
@@ -68,10 +70,15 @@ export default {
             console.log("fail");
           } else {
             console.log(this.data.type);
-            this.$q.localStorage.set('child', this.data);
-            this.$q.localStorage.set('prevType', this.$q.localStorage.getItem('type'));
-            this.$q.localStorage.set('type', 'child');
-            this.$router.push("/" + this.data.type);
+            this.$q.localStorage.set("child", this.data);
+            this.$q.localStorage.set(
+              "prevType",
+              this.$q.localStorage.getItem("type")
+
+            );
+            this.$q.localStorage.set("type", "child");
+            this.$router.push("/organization/user");
+
           }
         })
         .catch(() => {
@@ -86,12 +93,15 @@ export default {
           if ("error" in this.data) {
             console.log("fail");
           } else {
-            this.$q.localStorage.set('child', this.data);
-            this.$q.localStorage.set('prevType', this.$q.localStorage.getItem('type'));
-            if (this.$q.localStorage.getItem('type') == 'family') {
-              this.getUser('organization', this.data.organization);
+            this.$q.localStorage.set("child", this.data);
+            this.$q.localStorage.set(
+              "prevType",
+              this.$q.localStorage.getItem("type")
+            );
+            if (this.$q.localStorage.getItem("type") == "family") {
+              this.getUser("organization", this.data.organization);
             } else {
-              this.getUser('family', this.data.family);
+              this.getUser("family", this.data.family);
             }
             this.$router.push("/child");
           }

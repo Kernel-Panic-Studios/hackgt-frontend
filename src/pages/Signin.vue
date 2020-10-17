@@ -2,13 +2,6 @@
   <q-page padding>
     <!-- content -->
     <h1>Sign in page</h1>
-    <!-- <q-btn @click="loadData()">Get data</q-btn> -->
-
-    <InternalLink
-      v-for="link in internalLinks"
-      :key="link.title"
-      v-bind="link"
-    />
     <div class="q-pa-md" style="max-width: 400px">
       <h2>Login</h2>
       <q-form @submit="login" @reset="onReset" class="q-gutter-md">
@@ -52,43 +45,21 @@
 </template>
 
 <script>
-import InternalLink from "components/InternalLink.vue";
 import user from "vuex";
 import axios from "axios";
 
-const linksData = [
-  {
-    title: "Organization",
-    caption: "/organization",
-    icon: "school",
-    link: "/organization"
-  },
-  {
-    title: "Family",
-    caption: "/family",
-    icon: "user",
-    link: "/family"
-  },
-  {
-    title: "Signup",
-    caption: "signup",
-    icon: "code",
-    link: "/Signup"
-  }
-];
 
 export default {
   name: "Signin",
-  components: { InternalLink },
   data() {
     return {
       internalLinks: linksData,
-      // email: "abc@123.com",
-      // password: "abc123",
-      // enteredtype: "organization",
-      email: "joe@statefarm.com",
-      password: "Joe",
-      enteredtype: "family",
+      email: "abc@123.com",
+      password: "abc123",
+      enteredtype: "organization",
+      // email: "joe@statefarm.com",
+      // password: "Joe",
+      // enteredtype: "family",
       accept: false
     };
   },
