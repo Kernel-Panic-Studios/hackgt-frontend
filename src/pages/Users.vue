@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center">
     <h1>{{ name }}</h1>
-    <h1>This is where parents/organizations see the children</h1>
+    <h2>This is where fmailies/organizations see the children</h2>
     <q-btn @click="loadData()">Get data</q-btn>
     <div class="q-pa-md">
       <div class="row justify-center q-gutter-sm">
@@ -45,15 +45,15 @@ export default {
         })
         .then(response => {
           this.data = response.data;
-          coneole.log(data);
+          console.log(this.data[0].name);
         })
         .catch(() => {
-          this.$q.notify({
-            color: "negative",
-            position: "top",
-            message: "Loading failed",
-            icon: "report_problem"
-          });
+          // this.$q.notify({
+          //   color: "negative",
+          //   position: "top",
+          //   message: "Loading failed",
+          //   icon: "report_problem"
+          // });
         });
     }
   }

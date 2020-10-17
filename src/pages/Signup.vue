@@ -20,10 +20,10 @@ const linksData = [
     link: "/organisation"
   },
   {
-    title: "Parent",
-    caption: "/parent",
+    title: "Family",
+    caption: "/family",
     icon: "user",
-    link: "/parent"
+    link: "/family"
   },
   {
     title: "Signin",

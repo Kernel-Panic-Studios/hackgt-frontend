@@ -9,24 +9,26 @@ const routes = [
     ]
   },
   {
-    path: '/parent',
+    path: '/family',
     component: () => import('layouts/Dashboard.vue'),
     children: [
       { path: '', component: () => import('pages/Users.vue') },
+      { path: '/child', component: () => import('pages/Index.vue') },
     ]
   },
-  {
-    path: '/parent/child',
-    component: () => import('layouts/Dashboard.vue'),
-    children: [
-      { path: '', component: () => import('pages/Index.vue') },
-    ]
-  },
+  // {
+  //   path: '/parent/child',
+  //   component: () => import('layouts/Dashboard.vue'),
+  //   children: [
+  //     { path: '', component: () => import('pages/Index.vue') },
+  //   ]
+  // },
   {
     path: '/organisation',
     component: () => import('layouts/Dashboard.vue'),
     children: [
       { path: '', component: () => import('pages/Users.vue') },
+      { path: '/child', component: () => import('pages/Index.vue') },
     ]
   },
 
