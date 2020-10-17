@@ -28,8 +28,7 @@ export default {
     children: Number
   },
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
     supportOrg() {
@@ -43,6 +42,11 @@ export default {
           if ("error" in this.data) {
             console.log("fail");
           } else {
+            this.$q.notify({
+              message: "You now support a child",
+              color: "#21ba45",
+              timeout: 1500
+            });
             this.$router.push("/family");
           }
         })
