@@ -15,15 +15,23 @@
       <q-btn
         class="user-card-button primary-border q-ma-sm"
         flat
+        v-if="family != null && family.length > 0"
         @click="viewChild"
         >View Child</q-btn
       >
       <q-btn
         class="user-card-button primary-border q-ma-sm"
-        v-if="type == 'organization'"
+        v-if="type == 'organization' && family != null && family.length > 0"
         flat
         @click="expanded = !expanded"
         >Log In</q-btn
+      >
+      <q-btn
+        class="user-card-button primary-border q-ma-sm full-width"
+        v-if="type == 'organization' && (family == null || family.length == 0)"
+        flat
+        disabled
+        >No Supporting Family Yet</q-btn
       >
     </q-card-actions>
 
@@ -50,7 +58,8 @@ export default {
   props: {
     name: String,
     id: Number,
-    type: String
+    type: String,
+    family: Object
   },
   data() {
     return {
