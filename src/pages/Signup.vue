@@ -13,24 +13,42 @@
         />
         <q-input
           filled
+          type="string"
+          v-model="password"
+          label="Password"
+          hint="password"
+          lazy-rules
+        />
+        <q-input
+          filled
           type="name"
           v-model="name"
           label="Your name *"
           hint="name"
           lazy-rules
         />
-
         <q-input
           filled
-          type="string"
-          v-model="password"
-          label="Password"
+          type="textarea"
+          v-model="bio"
+          label="Your bio *"
+          hint="bio"
           lazy-rules
         />
         <q-select
           v-model="enteredType"
           :options="typeOptions"
-          label="Standard"
+          label="User Type"
+        />
+
+        <q-uploader
+          :field-name="email.replace('.', '-')"
+          url="https://hackgt.azurewebsites.net/upload"
+          @uploaded="uploaded"
+          style="width: 100%;"
+          label="Profile Picture"
+          auto-upload
+          :disable="email.length == 0 ? true : false"
         />
 
         <div class = 'center-all'>
@@ -61,11 +79,16 @@ export default {
   data() {
     return {
       // type: this.$q.localStorage.geItem("type"),
-      email: "abc@12345.com",
-      name: "abc12345",
-      password: "abc12345",
+      // email: "abc@12345.com",
+      // name: "abc12345",
+      // password: "abc12345",
+      email: "",
+      name: "",
+      password: "",
+      bio: "",
+      file: null,
       enteredType: null,
-      typeOptions: ["organization", "family"],
+      typeOptions: ["Organization", "Family"],
       // email: "joe@statefarm.com",
       // password: "Joe",
       // enteredType: "family",
@@ -76,10 +99,12 @@ export default {
     signup() {
       console.log("hi");
       axios
-        .post("https://hackgt.azurewebsites.net/" + this.enteredType, {
+        .post("https://hackgt.azurewebsites.net/" + this.enteredType.toLowerCase(), {
           email: this.email,
           password: this.password,
-          name: this.name
+          name: this.name,
+          bio: this.bio,
+          profile_pic: this.file.replace('.', '-')
         })
         .then(response => {
           this.data = response.data;
@@ -101,6 +126,9 @@ export default {
         .catch(() => {
           console.log("fail");
         });
+    },
+    uploaded(f) {
+      this.file = this.email;
     }
   }
 };

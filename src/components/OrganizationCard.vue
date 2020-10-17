@@ -1,7 +1,7 @@
 <template>
   <!-- <a> -->
   <q-card class="q-ma-sm" to="/Organization">
-    <img src="https://cdn.quasar.dev/img/mountains.jpg" />
+    <img :src="(profile != null && profile.length > 0) ? profile : 'https://cdn.quasar.dev/img/mountains.jpg'" />
 
     <q-card-section>
       <div class="text-h6">Name: {{ name }}</div>
@@ -11,7 +11,7 @@
     <q-separator dark />
 
     <q-card-actions>
-      <q-btn flat @click="supportOrg">Support this Organization</q-btn>
+      <q-btn flat @click="supportOrg" :disable="children == 0 ? true : false">Support this Organization</q-btn>
     </q-card-actions>
   </q-card>
   <!-- </a> -->
@@ -25,7 +25,8 @@ export default {
   props: {
     name: String,
     email: String,
-    children: Number
+    children: Number,
+    profile: String
   },
   data() {
     return {};

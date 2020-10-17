@@ -1,6 +1,6 @@
 <template>
   <q-card class="q-ma-sm q-mb-md center-all" to="/User">
-    <img src="https://cdn.quasar.dev/img/mountains.jpg" />
+    <img :src="(profile != null && profile.length > 0) ? profile : 'https://cdn.quasar.dev/img/mountains.jpg'" />
 
     <q-card-section>
       <div class="text-h6 child-card-info">
@@ -59,7 +59,8 @@ export default {
     name: String,
     id: Number,
     type: String,
-    family: Object
+    family: Object,
+    profile: String
   },
   data() {
     return {

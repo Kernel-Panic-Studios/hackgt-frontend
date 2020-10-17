@@ -7,11 +7,30 @@
           filled
           type="name"
           v-model="name"
-          label=" name *"
+          label=" Name *"
           hint="name"
           lazy-rules
         />
         <q-input filled type="number" v-model="id" label="ID" lazy-rules />
+
+        <q-input
+          filled
+          type="textarea"
+          v-model="bio"
+          label="Your bio *"
+          hint="bio"
+          lazy-rules
+        />
+
+        <q-uploader
+          :field-name="email.replace('.', '-') + '-' + id"
+          url="https://hackgt.azurewebsites.net/upload"
+          @uploaded="uploaded"
+          style="width: 100%;"
+          label="Profile Picture"
+          auto-upload
+          :disable="(id == null || id == '') ? true : false"
+        />
 
         <div>
           <q-btn label="Submit" type="submit" color="primary" />
@@ -37,8 +56,12 @@ export default {
   // components: { InternalLink },
   data() {
     return {
-      name: "Maanit",
-      id: "1"
+      name: "",
+      id: null,
+      bio: "",
+      file: null
+      // name: "Maanit",
+      // id: "1"
       // email: this.$store.state.type.email,
       // password: "Joe",
       // enteredType: "family",
@@ -51,7 +74,9 @@ export default {
         .post("https://hackgt.azurewebsites.net/child", {
           name: this.name,
           id: this.id,
-          organization: this.email
+          organization: this.email,
+          bio: this.bio,
+          profile_pic: this.file.replace('.', '-')
         })
         .then(response => {
           this.data = response.data;
@@ -81,6 +106,9 @@ export default {
     },
     goBack() {
       this.$router.push("/" + this.userType);
+    },
+    uploaded(f) {
+      this.file = this.email.replace('.', '-') + '-' + this.id;
     }
   },
   computed: {

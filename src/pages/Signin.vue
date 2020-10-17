@@ -19,12 +19,13 @@
           type="string"
           v-model="password"
           label="Password"
+          hint="password"
           lazy-rules
         />
         <q-select
           v-model="enteredType"
           :options="typeOptions"
-          label="Standard"
+          label="User Type"
         />
         <div>
           <q-btn label="Login" type="submit" color="primary" />
@@ -52,9 +53,11 @@ export default {
       // email: "abc@123.com",
       // password: "abc123",
       enteredType: null,
-      typeOptions: ["organization", "family"],
-      email: "joe@statefarm.com",
-      password: "Joe",
+      typeOptions: ["Organization", "Family"],
+      email: "",
+      password: "",
+      // email: "joe@statefarm.com",
+      // password: "Joe",
       accept: false
     };
   },
@@ -65,7 +68,7 @@ export default {
         .post("https://hackgt.azurewebsites.net/login", {
           email: this.email,
           password: this.password,
-          type: this.enteredType
+          type: this.enteredType.toLowerCase()
         })
         .then(response => {
           this.data = response.data;
@@ -78,8 +81,8 @@ export default {
             });
           } else {
             console.log(this.data.type);
-            this.$q.localStorage.set("type", this.enteredType);
-            this.$q.localStorage.set(this.enteredType, this.data);
+            this.$q.localStorage.set("type", this.enteredType.toLowerCase());
+            this.$q.localStorage.set(this.enteredType.toLowerCase(), this.data);
             this.$router.push("/" + this.data.type);
           }
         })

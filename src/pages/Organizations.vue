@@ -19,7 +19,8 @@
           <OrganizationCard
             :name="org.name"
             :email="org.email"
-            :children="org.children.length"
+            :children="getChildrenLength(org, index)"
+            :profile="org.profile_pic"
           />
           <!-- <q-card class="q-ma-sm">
             <img src="https://cdn.quasar.dev/img/mountains.jpg" />
@@ -58,10 +59,20 @@ export default {
   data() {
     return {
       familyLinks: familyLinksData,
-      organizations: null
+      organizations: null,
     };
   },
-  methods: {},
+  methods: {
+    getChildrenLength(org, index) {
+      var count = 0;
+      for (var child in org.children) {
+        if (org.children[child].family == null || org.children[child].family.length == 0) {
+          count += 1;
+        }
+      }
+      return count;
+    }
+  },
   created: function() {
     axios
       .get("https://hackgt.azurewebsites.net/organization")

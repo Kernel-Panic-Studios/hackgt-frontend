@@ -25,7 +25,7 @@
           transition="scale"
           class="child-card"
         >
-          <UserCard :type="type" :name="child.name" :id="child.id" :family="child.family" />
+          <UserCard :type="type" :name="child.name" :id="child.id" :family="child.family" :profile="child.profile_pic" />
           <!-- <q-card class="q-ma-sm">
             <img src="https://cdn.quasar.dev/img/mountains.jpg" />
 

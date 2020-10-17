@@ -10,6 +10,7 @@
           :bg-color="m.sender == username ? '#a9a9a9' : 'primary'"
           :text-color="m.sender == username ? 'black' : 'white'"
           :stamp="m.created_at"
+          :avatar="(sender === 'child' ? family.profile_pic : child.profile_pic)"
         />
       </div>
     </div>
