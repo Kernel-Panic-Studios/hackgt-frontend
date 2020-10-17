@@ -1,21 +1,17 @@
 <template>
-  <q-item clickable tag="a" :to="link" replace>
+  <q-btn :to="link" replace>
+    <q-item-section>
+      <q-item-label>{{ title }}</q-item-label>
+    </q-item-section>
     <q-item-section v-if="icon" avatar>
       <q-icon :name="icon" />
     </q-item-section>
-
-    <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>
-        {{ caption }}
-      </q-item-label>
-    </q-item-section>
-  </q-item>
+  </q-btn>
 </template>
 
 <script>
 export default {
-  name: "InternalLink",
+  name: "FindOrganization",
   props: {
     title: {
       type: String,

@@ -67,7 +67,7 @@ export default {
             console.log("success");
             this.$q.notify({
               message: "Child Added!",
-              color: "red",
+              color: "#21ba45",
               timeout: 1500
             });
             // this.$store.commit("user/setUserType", this.data.type);

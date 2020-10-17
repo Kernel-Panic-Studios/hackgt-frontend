@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center">
     <h1>{{ name }}</h1>
-    <h2>This is where {{ type }} see the organizations</h2>
+    <h2>This is where the {{ type }} see the organizations</h2>
     <div v-if="type == 'family'">
       <InternalLink
         v-for="link in familyLinks"
@@ -16,7 +16,11 @@
           :key="index"
           class="example-item"
         >
-          <OrganizationCard :name="org.name" :email="org.email" :children="org.children.length" />
+          <OrganizationCard
+            :name="org.name"
+            :email="org.email"
+            :children="org.children.length"
+          />
           <!-- <q-card class="q-ma-sm">
             <img src="https://cdn.quasar.dev/img/mountains.jpg" />
 
@@ -37,12 +41,12 @@ import InternalLink from "components/InternalLink.vue";
 import axios from "axios";
 
 const familyLinksData = [
-  {
-    title: "Add Child",
-    caption: "/addchild",
-    icon: "user",
-    link: "/addchild"
-  }
+  // {
+  //   title: "Add Child",
+  //   caption: "/addchild",
+  //   icon: "user",
+  //   link: "/addchild"
+  // }
 ];
 
 export default {

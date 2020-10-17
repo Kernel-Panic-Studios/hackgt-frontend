@@ -9,12 +9,13 @@
       />
     </div>
     <div v-if="type == 'family'">
-      <InternalLink
+      <FindOrganization
         v-for="link in familyLinks"
         :key="link.title"
         v-bind="link"
       />
     </div>
+    <br />
     <div class="q-pa-md">
       <div class="row justify-center q-gutter-sm">
         <q-intersection
@@ -40,7 +41,7 @@
 </template>
 <script>
 import UserCard from "components/UserCard.vue";
-import InternalLink from "components/InternalLink.vue";
+import FindOrganization from "components/FindOrganization.vue";
 import AddChildButton from "components/AddChildButton.vue";
 import axios from "axios";
 
@@ -55,14 +56,13 @@ const organizationLinksData = [
 const familyLinksData = [
   {
     title: "Find an Organization",
-    caption: "/organizations",
-    icon: "user",
+    icon: "launch",
     link: "/organizations"
   }
 ];
 
 export default {
-  components: { UserCard, InternalLink, AddChildButton },
+  components: { UserCard, FindOrganization, AddChildButton },
   name: "Users",
   props: {
     name: String

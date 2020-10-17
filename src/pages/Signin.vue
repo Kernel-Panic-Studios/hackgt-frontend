@@ -49,13 +49,12 @@ export default {
   name: "Signin",
   data() {
     return {
-      email: "abc@123.com",
-      password: "abc123",
+      // email: "abc@123.com",
+      // password: "abc123",
       enteredType: null,
       typeOptions: ["organization", "family"],
-      // email: "joe@statefarm.com",
-      // password: "Joe",
-      // enteredType: "family",
+      email: "joe@statefarm.com",
+      password: "Joe",
       accept: false
     };
   },
