@@ -48,7 +48,7 @@ export default {
     loadPosts() {
       this.child = this.$q.localStorage.getItem('child');
       this.family = this.$q.localStorage.getItem('family');
-      this.fileData = 'a' + Date.now().toString();
+      this.fileData = this.child.name + this.family.email.replace('.', '-') + Date.now().toString();
       axios
         .get("http://localhost:5000/feed/" + this.child.id)
         .then(response => {
