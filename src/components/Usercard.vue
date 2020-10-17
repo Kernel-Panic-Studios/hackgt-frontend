@@ -11,7 +11,7 @@
       <q-separator dark />
 
       <q-card-actions>
-        <q-btn flat to="/child">Go to User</q-btn>
+        <q-btn flat to="/upload">Go to User</q-btn>
         <q-btn flat>Action 2</q-btn>
       </q-card-actions>
     </q-card>

@@ -14,6 +14,7 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Users.vue') },
       { path: '/child', component: () => import('pages/Index.vue') },
+      { path: '/upload', component: () => import('pages/Upload.vue') },
     ]
   },
   // {
