@@ -56,7 +56,7 @@ const userOptions = [
   {
     title: "Events",
     icon: "today",
-    link: "/user/event"
+    link: "/user/events"
   }
 ];
 const organizationOptions = [

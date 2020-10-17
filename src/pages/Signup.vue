@@ -92,7 +92,6 @@ export default {
       // email: "joe@statefarm.com",
       // password: "Joe",
       // enteredType: "family",
-      accept: false
     };
   },
   methods: {
