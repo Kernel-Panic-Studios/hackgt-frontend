@@ -7,9 +7,12 @@
     <q-card-section>
       <div class="text-h6">{{ title }}</div>
       <q-item-label>{{ title }}</q-item-label>
+
+      <q-item-label>{{ link }}</q-item-label>
       <q-item-label caption>
         {{ caption }}
       </q-item-label>
+      <router-link :to="link">View {{ title }}</router-link>
     </q-card-section>
   </q-card>
 </template>
@@ -43,3 +46,4 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped></style>

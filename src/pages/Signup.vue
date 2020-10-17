@@ -1,11 +1,6 @@
 <template>
   <q-page padding>
     <h1>Sign up page</h1>
-    <InternalLink
-      v-for="link in internalLinks"
-      :key="link.title"
-      v-bind="link"
-    />
     <div class="q-pa-md" style="max-width: 400px">
       <h2>Sign Up</h2>
       <q-form @submit="signup" @reset="onReset" class="q-gutter-md">
@@ -61,33 +56,10 @@
 </template>
 
 <script>
-import InternalLink from "components/InternalLink.vue";
 import axios from 'axios'
-
-const linksData = [
-  {
-    title: "Organization",
-    caption: "/organization",
-    icon: "school",
-    link: "/organization"
-  },
-  {
-    title: "Family",
-    caption: "/family",
-    icon: "user",
-    link: "/family"
-  },
-  {
-    title: "Signin",
-    caption: "signup",
-    icon: "code",
-    link: "/"
-  }
-];
 
 export default {
   name: "Signup",
-  components: { InternalLink },
   data() {
     return {
       internalLinks: linksData,

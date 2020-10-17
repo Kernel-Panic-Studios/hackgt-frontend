@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center">
     <h1>{{ name }}</h1>
-    <h2>This is where families/organizations see the children</h2>
+    <h2>This is where {{ type }} see the children</h2>
     <div v-if="type == 'organization'">
       <InternalLink
         v-for="link in organizationLinks"
@@ -38,12 +38,6 @@ import axios from "axios";
 
 const organizationLinksData = [
   {
-    title: "Child Portal",
-    caption: "/",
-    icon: "user",
-    link: "/organization/childportal"
-  },
-  {
     title: "Add Child",
     caption: "/addchild",
     icon: "user",
@@ -56,7 +50,6 @@ export default {
   name: "Users",
   props: {
     name: String
-    // children: Object
   },
   data() {
     return {
@@ -66,12 +59,21 @@ export default {
   },
   methods: {},
   created: function() {
-    if (this.$q.localStorage.getItem('type') == 'child') {
-      this.$q.localStorage.set('type', this.$q.localStorage.getItem('prevType'));
-      this.$q.localStorage.set('child', {});
+    if (this.$q.localStorage.getItem("type") == "child") {
+      this.$q.localStorage.set(
+        "type",
+        this.$q.localStorage.getItem("prevType")
+      );
+      this.$q.localStorage.set("child", {});
     }
     axios
-      .get("https://hackgt.azurewebsites.net/" + this.$q.localStorage.getItem('type') + "/" + this.$q.localStorage.getItem(this.$q.localStorage.getItem('type')).email)
+      .get(
+        "https://hackgt.azurewebsites.net/" +
+          this.$q.localStorage.getItem("type") +
+          "/" +
+          this.$q.localStorage.getItem(this.$q.localStorage.getItem("type"))
+            .email
+      )
       .then(response => {
         this.children = response.data.children;
         console.log(this.children);
@@ -83,7 +85,7 @@ export default {
   computed: {
     type: {
       get() {
-        return this.$q.localStorage.getItem('type');
+        return this.$q.localStorage.getItem("type");
       }
     }
   }

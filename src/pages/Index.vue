@@ -1,14 +1,33 @@
 <template>
   <q-page class="flex flex-center">
     <h2>Dashboard page where all user actions can be viewed</h2>
+    <p>{{ type }}</p>
     <div class="q-pa-md">
-      <div class="row justify-center q-gutter-sm">
+      <div class="row justify-center q-gutter-sm" v-if="type == 'family'">
         <q-intersection
-          v-for="index in familyOptionsList"
-          :key="index.title"
+          v-for="option in familyOptionsList"
+          :key="option.title"
           class="example-item"
         >
-          <MainOption v-bind="index"></MainOption>
+          <MainOption v-bind="option"></MainOption>
+        </q-intersection>
+      </div>
+      <div class="row justify-center q-gutter-sm" v-if="type == 'organization'">
+        <q-intersection
+          v-for="option in organizationOptionsList"
+          :key="option.title"
+          class="example-item"
+        >
+          <MainOption v-bind="option"></MainOption>
+        </q-intersection>
+      </div>
+      <div class="row justify-center q-gutter-sm" v-if="type == 'child'">
+        <q-intersection
+          v-for="option in userOptionsList"
+          :key="option.title"
+          class="example-item"
+        >
+          <MainOption v-bind="option"></MainOption>
         </q-intersection>
       </div>
     </div>
@@ -18,12 +37,12 @@
 <script>
 import MainOption from "components/MainOption.vue";
 
-const familyOptions = [
+const defaultOptions = [
   {
     title: "Feed",
     caption: "/.",
     icon: "house",
-    link: "/"
+    link: "/feed"
   },
   {
     title: "Chat",
@@ -32,31 +51,35 @@ const familyOptions = [
     link: "/chat"
   },
   {
-    title: "Upload",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
     title: "Events",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
-    title: "Donate",
     caption: "/.",
     icon: "house",
     link: "/"
   }
 ];
 
+let organizationOptions = defaultOptions;
+organizationOptions.push({
+  title: "Donate",
+  caption: "/.",
+  icon: "house",
+  link: "/donate"
+});
+
+let familyOptions = defaultOptions;
+familyOptions.push({
+  title: "Donate",
+  caption: "/.",
+  icon: "house",
+  link: "/donate"
+});
+
 const userOptions = [
   {
     title: "Feed",
     caption: "/.",
     icon: "house",
-    link: "/"
+    link: "/feed"
   },
   {
     title: "Chat",
@@ -65,22 +88,10 @@ const userOptions = [
     link: "/chat"
   },
   {
-    title: "Upload",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
     title: "Events",
     caption: "/.",
     icon: "house",
-    link: "/"
-  },
-  {
-    title: "Donate",
-    caption: "/.",
-    icon: "house",
-    link: "/"
+    link: "/events"
   }
 ];
 
@@ -89,14 +100,20 @@ export default {
   components: {
     MainOption
   },
-  props: {
-    utype: String
-  },
+  props: {},
   data() {
     return {
       familyOptionsList: familyOptions,
+      organizationOptionsList: organizationOptions,
       userOptionsList: userOptions
     };
+  },
+  computed: {
+    type: {
+      get() {
+        return this.$q.localStorage.getItem("type");
+      }
+    }
   }
 };
 </script>
