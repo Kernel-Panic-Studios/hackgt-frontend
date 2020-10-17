@@ -15,7 +15,9 @@ const routes = [
       { path: "/child", component: () => import("pages/Index.vue") },
       { path: "/chat", component: () => import("pages/Chat.vue") },
       { path: "/feed", component: () => import("pages/Feed.vue") },
-      { path: "/events", component: () => import("pages/Events.vue") }
+      { path: "/events", component: () => import("pages/Events.vue") },
+      { path: "/organizations", component: () => import("pages/Organizations.vue") },
+      { path: "/donate", component: () => import("pages/Donate.vue") },
     ]
   },
   {

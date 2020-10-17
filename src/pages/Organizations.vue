@@ -1,14 +1,7 @@
 <template>
   <q-page class="flex flex-center">
     <h1>{{ name }}</h1>
-    <h2>This is where {{ type }} see the children</h2>
-    <div v-if="type == 'organization'">
-      <InternalLink
-        v-for="link in organizationLinks"
-        :key="link.title"
-        v-bind="link"
-      />
-    </div>
+    <h2>This is where {{ type }} see the organizations</h2>
     <div v-if="type == 'family'">
       <InternalLink
         v-for="link in familyLinks"
@@ -19,11 +12,11 @@
     <div class="q-pa-md">
       <div class="row justify-center q-gutter-sm">
         <q-intersection
-          v-for="(child, index) in children"
+          v-for="(org, index) in organizations"
           :key="index"
           class="example-item"
         >
-          <UserCard :type="type" :name="child.name" :id="child.id" />
+          <OrganizationCard :name="org.name" :email="org.email" :children="org.children.length" />
           <!-- <q-card class="q-ma-sm">
             <img src="https://cdn.quasar.dev/img/mountains.jpg" />
 
@@ -39,11 +32,11 @@
 </template>
 
 <script>
-import UserCard from "components/UserCard.vue";
+import OrganizationCard from "components/OrganizationCard.vue";
 import InternalLink from "components/InternalLink.vue";
 import axios from "axios";
 
-const organizationLinksData = [
+const familyLinksData = [
   {
     title: "Add Child",
     caption: "/addchild",
@@ -52,48 +45,25 @@ const organizationLinksData = [
   }
 ];
 
-const familyLinksData = [
-  {
-    title: "Find an Organization",
-    caption: "/organizations",
-    icon: "user",
-    link: "/organizations"
-  }
-];
-
 export default {
-  components: { UserCard, InternalLink },
-  name: "Users",
+  components: { OrganizationCard, InternalLink },
+  name: "Organizations",
   props: {
     name: String
   },
   data() {
     return {
-      organizationLinks: organizationLinksData,
       familyLinks: familyLinksData,
-      children: null
+      organizations: null
     };
   },
   methods: {},
   created: function() {
-    if (this.$q.localStorage.getItem("type") == "child") {
-      this.$q.localStorage.set(
-        "type",
-        this.$q.localStorage.getItem("prevType")
-      );
-      this.$q.localStorage.set("child", {});
-    }
     axios
-      .get(
-        "https://hackgt.azurewebsites.net/" +
-          this.$q.localStorage.getItem("type") +
-          "/" +
-          this.$q.localStorage.getItem(this.$q.localStorage.getItem("type"))
-            .email
-      )
+      .get("https://hackgt.azurewebsites.net/organization")
       .then(response => {
-        this.children = response.data.children;
-        console.log(this.children);
+        this.organizations = response.data;
+        console.log(this.organizations);
       })
       .catch(() => {
         console.log("fail");
