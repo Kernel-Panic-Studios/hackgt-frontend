@@ -2,9 +2,31 @@
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/Landing.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '', component: () => import('pages/Signin.vue') },
+      { path: '/signup', component: () => import('pages/Signup.vue') }
+    ]
+  },
+  {
+    path: '/parent',
+    component: () => import('layouts/Dashboard.vue'),
+    children: [
+      { path: '', component: () => import('pages/Users.vue') },
+    ]
+  },
+  {
+    path: '/parent/child',
+    component: () => import('layouts/Dashboard.vue'),
+    children: [
+      { path: '', component: () => import('pages/Index.vue') },
+    ]
+  },
+  {
+    path: '/organisation',
+    component: () => import('layouts/Dashboard.vue'),
+    children: [
+      { path: '', component: () => import('pages/Users.vue') },
     ]
   },
 

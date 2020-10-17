@@ -32,8 +32,8 @@
         >
           Essential Links
         </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
+        <InternalLink
+          v-for="link in internalLinks"
           :key="link.title"
           v-bind="link"
         />
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+import InternalLink from 'components/InternalLink.vue'
 
 const linksData = [
   {
@@ -96,11 +96,11 @@ const linksData = [
 
 export default {
   name: 'MainLayout',
-  components: { EssentialLink },
+  components: { InternalLink },
   data () {
     return {
       leftDrawerOpen: false,
-      essentialLinks: linksData
+      internalLinks: linksData
     }
   }
 }
