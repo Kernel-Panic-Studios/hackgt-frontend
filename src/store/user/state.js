@@ -1,5 +1,7 @@
 export default function () {
   return {
-    utype: null
+    email: null,
+    type: null,
+    name: null,
   }
 }
