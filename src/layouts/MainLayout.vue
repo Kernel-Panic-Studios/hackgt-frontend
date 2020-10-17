@@ -12,7 +12,7 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
         <q-toolbar-title>
-          {{ name }} -- mainLayout
+          {{ name }} -- {{ type }}
         </q-toolbar-title>
       </q-toolbar>
 

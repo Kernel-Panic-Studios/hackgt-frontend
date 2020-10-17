@@ -12,7 +12,7 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
         <q-toolbar-title>
-          {{ name }}
+          {{ name }} -- {{ type }}
         </q-toolbar-title>
       </q-toolbar>
 
@@ -25,7 +25,6 @@
           label="Other Tab"
         />
       </q-tabs> -->
-      <p>{{ type }}</p>
     </q-header>
 
     <q-drawer

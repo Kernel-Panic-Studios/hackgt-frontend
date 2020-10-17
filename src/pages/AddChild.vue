@@ -1,18 +1,8 @@
 <template>
   <q-page padding>
-    <h1>Add child here</h1>
-    <div class="q-pa-md" style="max-width: 400px">
+    <div class="q-pa-md fixed-center" style="max-width: 40%">
       <h2>Add child</h2>
-      <q-form @submit="signup" @reset="onReset" class="q-gutter-md">
-
-        <q-input
-          filled
-          type="email"
-          v-model="email"
-          label="Your email *"
-          hint="email"
-          lazy-rules
-        />
+      <q-form @submit="createChild" class="q-gutter-md">
         <q-input
           filled
           type="name"
@@ -21,23 +11,13 @@
           hint="name"
           lazy-rules
         />
-        <q-input
-          filled
-          type="number"
-          v-model="id"
-          label="ID"
-          lazy-rules
-        />
+        <q-input filled type="number" v-model="id" label="ID" lazy-rules />
 
         <div>
+          <q-btn label="Submit" type="submit" color="primary" />
           <q-btn
-            label="Submit"
-            type="submit"
-            color="primary"
-          />
-          <q-btn
-            label="Reset"
-            type="reset"
+            label="GO Back"
+            @click="goBack"
             color="primary"
             flat
             class="q-ml-sm"
@@ -50,7 +30,7 @@
 
 <script>
 // import InternalLink from "components/InternalLink.vue";
-import axios from 'axios'
+import axios from "axios";
 
 export default {
   name: "AddChild",
@@ -58,40 +38,53 @@ export default {
   data() {
     return {
       name: "Maanit",
-      id: "1",
+      id: "1"
       // email: this.$store.state.type.email,
-      email: "abc@123.com",
       // password: "Joe",
       // enteredType: "family",
-      accept: false
     };
   },
   methods: {
-    signup() {
-      console.log("hi");
+    createChild() {
+      console.log(this.email);
       axios
-        .post(
-          "https://hackgt.azurewebsites.net/child", {
-            name: this.name,
-            id: this.id,
-            organization: this.email
-          }
-        )
+        .post("https://hackgt.azurewebsites.net/child", {
+          name: this.name,
+          id: this.id,
+          organization: this.email
+        })
         .then(response => {
           this.data = response.data;
           if ("error" in this.data) {
             console.log("fail");
           } else {
             console.log(this.data);
-            console.log("success")
+            console.log("success");
             // this.$store.commit("user/setUserType", this.data.type);
             // console.log(this.data.type);
-            // this.$router.push('/' + this.data.type)
+            this.$router.push("/" + this.userType);
           }
         })
         .catch(() => {
           console.log("fail");
         });
+    },
+    goBack() {
+      this.$router.push("/" + this.userType);
+    }
+  },
+  computed: {
+    email: {
+      get() {
+        return this.$q.localStorage.getItem(
+          this.$q.localStorage.getItem("type")
+        ).email;
+      }
+    },
+    userType: {
+      get() {
+        return this.$q.localStorage.getItem("type");
+      }
     }
   }
 };

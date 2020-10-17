@@ -1,9 +1,8 @@
 <template>
   <q-page padding>
-    <h1>Sign up page</h1>
-    <div class="q-pa-md" style="max-width: 400px">
-      <h2>Sign Up</h2>
-      <q-form @submit="signup" @reset="onReset" class="q-gutter-md">
+    <div class="q-pa-md fixed-center" style="max-width: 40%">
+      <h2>Create an account</h2>
+      <q-form @submit="signup" class="q-gutter-md">
         <q-input
           filled
           type="email"
@@ -28,23 +27,17 @@
           label="Password"
           lazy-rules
         />
-        <q-input
-          filled
-          type="string"
+        <q-select
           v-model="enteredType"
-          label="enteredType"
-          lazy-rules
+          :options="typeOptions"
+          label="Standard"
         />
 
         <div>
+          <q-btn label="Submit" type="submit" color="primary" />
           <q-btn
-            label="Submit"
-            type="submit"
-            color="primary"
-          />
-          <q-btn
-            label="Reset"
-            type="reset"
+            label="Already have an account? Sign in!"
+            to="/"
             color="primary"
             flat
             class="q-ml-sm"
@@ -56,18 +49,18 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 
 export default {
   name: "Signup",
   data() {
     return {
-      internalLinks: linksData,
-      type: this.$q.localStorage.geItem('type'),
+      // type: this.$q.localStorage.geItem("type"),
       email: "abc@12345.com",
       name: "abc12345",
       password: "abc12345",
-      enteredType: "organization",
+      enteredType: null,
+      typeOptions: ["organization", "family"],
       // email: "joe@statefarm.com",
       // password: "Joe",
       // enteredType: "family",
@@ -78,22 +71,20 @@ export default {
     signup() {
       console.log("hi");
       axios
-        .post(
-          "https://hackgt.azurewebsites.net/" + this.enteredType, {
-            email: this.email,
-            password: this.password,
-            name: this.name,
-          }
-        )
+        .post("https://hackgt.azurewebsites.net/" + this.enteredType, {
+          email: this.email,
+          password: this.password,
+          name: this.name
+        })
         .then(response => {
           this.data = response.data;
           if ("error" in this.data) {
             console.log("fail");
           } else {
-            this.$q.localStorage.set('type', this.data.type);
+            this.$q.localStorage.set("type", this.data.type);
             this.$q.localStorage.set(this.data.type, this.data);
             console.log(this.data.type);
-            this.$router.push('/' + this.data.type)
+            this.$router.push("/" + this.data.type);
           }
         })
         .catch(() => {
@@ -103,3 +94,6 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+
+</style>

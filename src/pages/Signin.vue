@@ -1,10 +1,10 @@
 <template>
   <q-page padding>
     <!-- content -->
-    <h1>Sign in page</h1>
-    <div class="q-pa-md" style="max-width: 400px">
+    <!-- <q-btn @click="loadData()">Get data</q-btn> -->
+    <div class="q-pa-sd fixed-center" style="max-width: 40%">
       <h2>Login</h2>
-      <q-form @submit="login" @reset="onReset" class="q-gutter-md">
+      <q-form @submit="login" class="q-gutter-md">
         <q-input
           filled
           type="email"
@@ -21,19 +21,12 @@
           label="Password"
           lazy-rules
         />
-        <q-input
-          filled
-          type="string"
-          v-model="enteredtype"
-          label="enteredtype"
-          lazy-rules
-        />
-
+        <q-select v-model="enteredType" :options="typeOptions" label="Standard" />
         <div>
           <q-btn label="Submit" type="submit" color="primary" />
           <q-btn
-            label="Reset"
-            type="reset"
+            label="Don't have an account? Sign up!"
+            to='/signup'
             color="primary"
             flat
             class="q-ml-sm"
@@ -48,18 +41,17 @@
 import user from "vuex";
 import axios from "axios";
 
-
 export default {
   name: "Signin",
   data() {
     return {
-      internalLinks: linksData,
       email: "abc@123.com",
       password: "abc123",
-      enteredtype: "organization",
+      enteredType: null,
+      typeOptions: ['organization', 'family'],
       // email: "joe@statefarm.com",
       // password: "Joe",
-      // enteredtype: "family",
+      // enteredType: "family",
       accept: false
     };
   },
@@ -70,7 +62,7 @@ export default {
         .post("https://hackgt.azurewebsites.net/login", {
           email: this.email,
           password: this.password,
-          type: this.enteredtype
+          type: this.enteredType
         })
         .then(response => {
           this.data = response.data;
@@ -78,8 +70,8 @@ export default {
             console.log("fail");
           } else {
             console.log(this.data.type);
-            this.$q.localStorage.set('type', this.enteredtype);
-            this.$q.localStorage.set(this.enteredtype, this.data);
+            this.$q.localStorage.set("type", this.enteredType);
+            this.$q.localStorage.set(this.enteredType, this.data);
             this.$router.push("/" + this.data.type);
           }
         })
@@ -90,3 +82,5 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+</style>
