@@ -85,22 +85,22 @@ const userOptions = [
   {
     title: "Home",
     icon: "house",
-    link: ""
+    link: "/user"
   },
   {
     title: "Feed",
     icon: "speaker_notes",
-    link: "/feed"
+    link: "/user/feed"
   },
   {
     title: "Chat",
     icon: "question_answer",
-    link: "/chat"
+    link: "/user/chat"
   },
   {
     title: "Events",
     icon: "today",
-    link: "/events"
+    link: "/user/events"
   },
 ];
 
