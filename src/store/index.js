@@ -25,5 +25,13 @@ export default function (/* { ssrContext } */) {
     strict: process.env.DEV
   })
 
+
+  if (process.env.DEV && module.hot) {
+    module.hot.accept(['./user'], () => {
+      const newUser = require('./user').default
+      Store.hotUpdate({ modules: { user: newUser } })
+    })
+  }
+
   return Store
 }

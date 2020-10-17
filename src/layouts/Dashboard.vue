@@ -12,7 +12,7 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
         <q-toolbar-title>
-          Header
+          {{ name }}
         </q-toolbar-title>
       </q-toolbar>
 
@@ -108,6 +108,13 @@ export default {
       leftDrawerOpen: false,
       internalLinks: linksData
     };
+  },
+  computed: {
+    name: {
+      get() {
+        return this.$store.state.user.name;
+      }
+    }
   }
 };
 </script>

@@ -83,14 +83,14 @@ export default {
   data() {
     return {
       internalLinks: linksData,
-      type: this.$store.state.type,
+      // type: this.$store.state.type,
       email: "abc@123.com",
-      password: "abc123",
-      enteredtype: "organization",
+      name: "",
+      id: 2,
       // email: "joe@statefarm.com",
       // password: "Joe",
       // enteredtype: "family",
-      accept: false
+      // accept: false
     };
   },
   methods: {
@@ -98,9 +98,9 @@ export default {
       console.log("hi");
       axios
         .post("https://hackgt.azurewebsites.net/login", {
-          email: this.email,
-          password: this.password,
-          type: this.enteredtype
+          id: this.id,
+          name = this.name,
+          email: "orgainzation"
         })
         .then(response => {
           this.data = response.data;
@@ -110,7 +110,7 @@ export default {
             console.log(this.data.type);
             this.$store.commit("user/setUserType", this.data.type);
             this.$store.commit("user/setUserName", this.data.name);
-            this.$store.commit("user/setUserEmail", this.data.email);
+            // this.$store.commit("user/setUserEmail", this.data.email);
             console.log(this.data.type);
             this.$router.push("/" + this.data.type);
           }

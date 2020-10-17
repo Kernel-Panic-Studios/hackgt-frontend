@@ -1,7 +1,5 @@
 <template>
   <q-page class="flex flex-center">
-    <h2>You are a {{ utype }}</h2>
-    <q-btn @click="loadData">Load data</q-btn>
     <h2>Dashboard page where all user actions can be viewed</h2>
     <div class="q-pa-md">
       <div class="row justify-center q-gutter-sm">
@@ -10,7 +8,7 @@
           :key="index.title"
           class="example-item"
         >
-          <mainoption v-bind="index"></mainoption>
+          <MainOption v-bind="index"></MainOption>
         </q-intersection>
       </div>
     </div>
@@ -18,7 +16,7 @@
 </template>
 
 <script>
-import Mainoption from "components/Mainoption.vue";
+import MainOption from "components/MainOption.vue";
 
 const familyOptions = [
   {
@@ -89,7 +87,7 @@ const userOptions = [
 export default {
   name: "Index",
   components: {
-    Mainoption
+    MainOption
   },
   props: {
     utype: String
@@ -99,20 +97,6 @@ export default {
       familyOptionsList: familyOptions,
       userOptionsList: userOptions
     };
-  },
-  methods: {
-    loadData() {
-      console.log(this.$store.state.user.utype)
-      this.utype = this.$store.state.user.utype;
-      return this.$store.state.user.utype;
-    },
-    computed: {
-      utype: {
-        get() {
-          return this.$store.state.user.utype;
-        }
-      }
-    }
   }
 };
 </script>
