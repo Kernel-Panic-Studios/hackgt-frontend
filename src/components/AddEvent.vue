@@ -14,7 +14,12 @@
         <q-date v-model="date" />
 
         <div>
-          <q-btn label="Add Event" type="submit" color="primary" />
+          <q-btn
+            label="Add Event"
+            type="submit"
+            color="primary"
+            :disable="title.length == 0 ? true : false"
+          />
           <q-btn
             label="GO Back"
             @click="goBack"
@@ -93,9 +98,7 @@ export default {
     },
     email: {
       get() {
-        return this.$q.localStorage.getItem(
-          this.$q.localStorage.getItem("type")
-        ).email;
+        return this.$q.localStorage.getItem("family").email;
       }
     },
     child: {
@@ -106,8 +109,7 @@ export default {
   },
   created() {
     this.date = this.todayDate;
-  },
+  }
 };
 </script>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
