@@ -1,34 +1,45 @@
 <template>
-  <!-- <a> -->
-  <q-card class="q-ma-sm" to="/User">
+  <q-card class="q-ma-sm q-mb-md center-all" to="/User">
     <img src="https://cdn.quasar.dev/img/mountains.jpg" />
 
     <q-card-section>
-      <div class="text-h6">Name: {{ name }}</div>
-      <div class="text-h6">Child #{{ id }}</div>
+      <div class="text-h6 child-card-info">
+        {{ name }}
+      </div>
+      <!-- <div class="text-h6">Child #{{ id }}</div> -->
     </q-card-section>
 
-    <q-separator dark />
+    <q-separator light />
 
-    <q-card-actions>
-      <q-btn flat @click="viewChild">View Child</q-btn>
-      <q-btn v-if="type == 'organization'" flat @click="expanded = !expanded"
+    <q-card-actions class="user-card-buttons">
+      <q-btn
+        class="user-card-button primary-border q-ma-sm"
+        flat
+        @click="viewChild"
+        >View Child</q-btn
+      >
+      <q-btn
+        class="user-card-button primary-border q-ma-sm"
+        v-if="type == 'organization'"
+        flat
+        @click="expanded = !expanded"
         >Log In</q-btn
       >
     </q-card-actions>
 
-    <div v-show="expanded">
-      <q-separator />
-      <q-card-section class="text-subitle2">
-        <q-input filled v-model="newId" label="Filled">
-          <template v-slot:after>
-            <q-btn round dense flat icon="send" @click="login" />
-          </template>
-        </q-input>
-      </q-card-section>
-    </div>
+    <q-slide-transition>
+      <div v-show="expanded">
+        <q-separator />
+        <q-card-section class="text-subitle2">
+          <q-input filled v-model="newId" label="Your ID">
+            <template v-slot:after>
+              <q-btn round dense flat icon="login" @click="login" />
+            </template>
+          </q-input>
+        </q-card-section>
+      </div>
+    </q-slide-transition>
   </q-card>
-  <!-- </a> -->
 </template>
 
 <script>
@@ -49,7 +60,7 @@ export default {
     };
   },
   mounted() {
-    this.newId = -1;
+    this.newId = null;
   },
   methods: {
     login() {
@@ -74,11 +85,9 @@ export default {
             this.$q.localStorage.set(
               "prevType",
               this.$q.localStorage.getItem("type")
-
             );
             this.$q.localStorage.set("type", "child");
-            this.$router.push("/organization/user");
-
+            this.$router.push("/user");
           }
         })
         .catch(() => {
@@ -127,3 +136,8 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+// .child-card {
+//   margin-bottom: 50px;
+// }
+</style>

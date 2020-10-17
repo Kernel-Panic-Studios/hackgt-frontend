@@ -63,11 +63,11 @@ export default {
               this.files.push('');
             }
           }
-          window.scrollTo({
-            top: document.body.scrollHeight,
-            left: 0,
-            behavior: 'smooth'
-          });
+          // window.scrollTo({
+          //   top: document.body.scrollHeight,
+          //   left: 0,
+          //   behavior: 'smooth'
+          // });
         })
         .catch(() => {
           console.log("fail");

@@ -58,11 +58,11 @@ export default {
         })
         .then(response => {
           this.messages = response.data;
-          window.scrollTo({
-            top: document.body.scrollHeight,
-            left: 0,
-            behavior: 'smooth'
-          });
+          // window.scrollTo({
+          //   top: document.body.scrollHeight,
+          //   left: 0,
+          //   behavior: 'smooth'
+          // });
         })
         .catch(() => {
           console.log("fail");
@@ -72,7 +72,7 @@ export default {
       var sender = this.family.email;
       if (this.type == 'child') {
         sender = this.child.id;
-      } 
+      }
       axios
         .post("https://hackgt.azurewebsites.net/chat/send", {
           child: this.child.id,

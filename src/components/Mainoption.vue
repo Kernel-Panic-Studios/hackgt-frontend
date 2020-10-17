@@ -1,20 +1,16 @@
 <template>
-  <q-card class="q-ma-sm">
-    <q-card-section v-if="icon" avatar>
-      <q-icon :name="icon" />
-    </q-card-section>
+  <router-link class="index-link center-all" :to="link">
+    <q-card class="q-ma-sm center-all option">
+      <q-card-section class="index-icon-section" v-if="icon" avatar>
+        <q-icon class="index-icon" :name="icon" />
+      </q-card-section>
 
-    <q-card-section>
-      <div class="text-h6">{{ title }}</div>
-      <q-item-label>{{ title }}</q-item-label>
-
-      <q-item-label>{{ link }}</q-item-label>
-      <q-item-label caption>
-        {{ caption }}
-      </q-item-label>
-      <router-link :to="link">View {{ title }}</router-link>
-    </q-card-section>
-  </q-card>
+      <q-card-section>
+        <div class="text-h3">{{ title }}</div>
+        <!-- <router-link class='index-link' :to="link">View {{ title }}</router-link> -->
+      </q-card-section>
+    </q-card>
+  </router-link>
 </template>
 
 <script>
@@ -25,17 +21,10 @@ export default {
       type: String,
       required: true
     },
-
-    caption: {
-      type: String,
-      default: ""
-    },
-
     link: {
       type: String,
       default: "/"
     },
-
     icon: {
       type: String,
       default: ""

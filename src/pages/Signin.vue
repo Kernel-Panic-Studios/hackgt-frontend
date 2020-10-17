@@ -21,12 +21,16 @@
           label="Password"
           lazy-rules
         />
-        <q-select v-model="enteredType" :options="typeOptions" label="Standard" />
+        <q-select
+          v-model="enteredType"
+          :options="typeOptions"
+          label="Standard"
+        />
         <div>
-          <q-btn label="Submit" type="submit" color="primary" />
+          <q-btn label="Login" type="submit" color="primary" />
           <q-btn
             label="Don't have an account? Sign up!"
-            to='/signup'
+            to="/signup"
             color="primary"
             flat
             class="q-ml-sm"
@@ -48,7 +52,7 @@ export default {
       email: "abc@123.com",
       password: "abc123",
       enteredType: null,
-      typeOptions: ['organization', 'family'],
+      typeOptions: ["organization", "family"],
       // email: "joe@statefarm.com",
       // password: "Joe",
       // enteredType: "family",
@@ -68,6 +72,11 @@ export default {
           this.data = response.data;
           if ("error" in this.data) {
             console.log("fail");
+            this.$q.notify({
+              message: "Login has failed!",
+              color: "red",
+              timeout: 1500
+            });
           } else {
             console.log(this.data.type);
             this.$q.localStorage.set("type", this.enteredType);
@@ -82,5 +91,4 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

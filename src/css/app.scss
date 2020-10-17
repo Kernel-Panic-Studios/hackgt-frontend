@@ -1,1 +1,57 @@
 // app global css in SCSS form
+@import "./quasar.variables.scss";
+h2 {
+  text-align: center;
+}
+div {
+  .child-card-info {
+    text-align: center;
+  }
+}
+.center-all {
+  text-align: center;
+}
+.user-card-buttons {
+  .user-card-button {
+    background-color: $secondary;
+    color:white;
+    width: 40%;
+  }
+}
+.child-card {
+    height: 400px;
+    width: 300px;
+}
+.cards {
+    height: 250px;
+    width: 40%;
+  }
+.red-border {
+  border: 1px $info solid;
+}
+.secondary-back {
+//   color: $light;
+}
+.primary-border {
+  border: 1px $primary solid;
+}
+.secondary-border {
+  border: 1px $secondary solid;
+}
+.index-link {
+  text-decoration: none;
+  color: $light;
+  font-size: 2em;
+
+  .index-icon {
+    font-size: 2em;
+  }
+  .option {
+    background-color: $secondary;
+    color: $light;
+  }
+}
+.sign-button {
+    margin-top: 2px;
+    // border: 2px $info solid;
+}

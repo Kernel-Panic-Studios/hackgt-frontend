@@ -23,19 +23,44 @@ const routes = [
     component: () => import("layouts/Dashboard.vue"),
     children: [
       { path: "", component: () => import("pages/Users.vue") },
-      { path: "/child", component: () => import("pages/Index.vue") },
+      // { path: "/child", component: () => import("pages/Index.vue") },
       { path: "/addchild", component: () => import("pages/AddChild.vue") }
     ]
   },
   {
-    path: "/organization/user",
+    path: "/organization/child",
+    component: () => import("layouts/Dashboard.vue"),
+    children: [
+      { path: "", component: () => import("pages/Index.vue") },
+      { path: "/feed", component: () => import("pages/Feed.vue") },
+      { path: "/chat", component: () => import("pages/Chat.vue") },
+      { path: "/events", component: () => import("pages/Events.vue") }
+    ]
+  },
+  {
+    path: "/user",
     component: () => import("layouts/MainLayout.vue"),
     children: [
       { path: "", component: () => import("pages/Index.vue") },
-      { path: "/chat", component: () => import("pages/Chat.vue") },
-      { path: "/feed", component: () => import("pages/Feed.vue") },
-      { path: "/events", component: () => import("pages/Events.vue") }
+      // { path: "/chat", component: () => import("pages/Chat.vue") },
+      // { path: "/feed", component: () => import("pages/Feed.vue") },
+      // { path: "/events", component: () => import("pages/Events.vue") }
     ]
+  },
+  {
+    path: "/user/chat",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [{ path: "", component: () => import("pages/Chat.vue") }]
+  },
+  {
+    path: "/user/feed",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [{ path: "", component: () => import("pages/Feed.vue") }]
+  },
+  {
+    path: "/user/events",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [{ path: "", component: () => import("pages/Events.vue") }]
   },
 
   // Always leave this as last one,

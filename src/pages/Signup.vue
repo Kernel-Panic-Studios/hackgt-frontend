@@ -33,14 +33,19 @@
           label="Standard"
         />
 
-        <div>
-          <q-btn label="Submit" type="submit" color="primary" />
+        <div class = 'center-all'>
+          <q-btn
+            class="sign-button"
+            label="Sign Up"
+            type="submit"
+            color="primary"
+          />
           <q-btn
             label="Already have an account? Sign in!"
             to="/"
             color="primary"
             flat
-            class="q-ml-sm"
+            class="q-ml-sm sign-button"
           />
         </div>
       </q-form>
@@ -80,6 +85,12 @@ export default {
           this.data = response.data;
           if ("error" in this.data) {
             console.log("fail");
+            console.log(this.data);
+            this.$q.notify({
+              message: "Sign up has failed!",
+              color: "red",
+              timeout: 1500
+            });
           } else {
             this.$q.localStorage.set("type", this.data.type);
             this.$q.localStorage.set(this.data.type, this.data);
@@ -94,6 +105,4 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
