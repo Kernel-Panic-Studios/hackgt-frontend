@@ -1,9 +1,8 @@
 <template>
   <q-page class="flex flex-center">
-    <h1>{{ name }}</h1>
-    <h2>This is where {{ type }} see the children</h2>
+    <h2>Welcome {{ personName }}, here are the children in your {{ type }}</h2>
     <div v-if="type == 'organization'">
-      <InternalLink
+      <AddChildButton
         v-for="link in organizationLinks"
         :key="link.title"
         v-bind="link"
@@ -21,7 +20,9 @@
         <q-intersection
           v-for="(child, index) in children"
           :key="index"
-          class="example-item"
+          once
+          transition="scale"
+          class="child-card"
         >
           <UserCard :type="type" :name="child.name" :id="child.id" />
           <!-- <q-card class="q-ma-sm">
@@ -37,17 +38,16 @@
     </div>
   </q-page>
 </template>
-
 <script>
 import UserCard from "components/UserCard.vue";
 import InternalLink from "components/InternalLink.vue";
+import AddChildButton from "components/AddChildButton.vue";
 import axios from "axios";
 
 const organizationLinksData = [
   {
     title: "Add Child",
-    caption: "/addchild",
-    icon: "user",
+    icon: "library_add",
     link: "/addchild"
   }
 ];
@@ -62,7 +62,7 @@ const familyLinksData = [
 ];
 
 export default {
-  components: { UserCard, InternalLink },
+  components: { UserCard, InternalLink, AddChildButton },
   name: "Users",
   props: {
     name: String
@@ -104,14 +104,21 @@ export default {
       get() {
         return this.$q.localStorage.getItem("type");
       }
+    },
+    personName: {
+      get() {
+        return this.$q.localStorage.getItem(
+          this.$q.localStorage.getItem("type")
+        ).name;
+      }
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.example-item {
-  height: 350px;
-  width: 290px;
-}
+// .child-card {
+//   height: 300px;
+//   width: 30%;
+// }
 </style>

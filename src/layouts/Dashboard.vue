@@ -33,7 +33,7 @@
       bordered
       content-class="bg-grey-1"
     >
-      <q-list v-if="type == 'user'">
+      <!-- <q-list v-if="type == 'user'">
         <q-item-label header class="text-grey-8">
           Essential Links
         </q-item-label>
@@ -42,7 +42,7 @@
           :key="link.title"
           v-bind="link"
         />
-      </q-list>
+      </q-list> -->
       <q-list v-if="type == 'organization'">
         <q-item-label header class="text-grey-8">
           Essential Links

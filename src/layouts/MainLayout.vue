@@ -76,113 +76,31 @@
 <script>
 import InternalLink from "components/InternalLink.vue";
 
-const familyOptions = [
-  {
-    title: "Home",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
-    title: "Feed",
-    caption: "/.",
-    icon: "house",
-    link: "/feed"
-  },
-  {
-    title: "Chat",
-    caption: "/chat",
-    icon: "house",
-    link: "/chat"
-  },
-  {
-    title: "Upload",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
-    title: "Events",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
-    title: "Donate",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  }
-];
-const organizationOptions = [
-  {
-    title: "Home",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
-    title: "Feed",
-    caption: "/.",
-    icon: "house",
-    link: "/feed"
-  },
-  {
-    title: "Chat",
-    caption: "/chat",
-    icon: "house",
-    link: "/chat"
-  },
-  {
-    title: "Upload",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
-    title: "Events",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
-    title: "Donate",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  }
-];
-
 const userOptions = [
   {
-    title: "Home",
-    caption: "/.",
-    icon: "house",
+    title: "Logout",
+    icon: "logout",
     link: "/"
+  },
+  {
+    title: "Home",
+    icon: "house",
+    link: "/user"
   },
   {
     title: "Feed",
-    caption: "/.",
-    icon: "house",
-    link: "/"
+    icon: "speaker_notes",
+    link: "/user/feed"
   },
   {
     title: "Chat",
-    caption: "/chat",
-    icon: "house",
-    link: "/chat"
-  },
-  {
-    title: "Upload",
-    caption: "/.",
-    icon: "house",
-    link: "/"
+    icon: "question_answer",
+    link: "/user/chat"
   },
   {
     title: "Events",
-    caption: "/.",
-    icon: "house",
-    link: "/"
+    icon: "today",
+    link: "/user/events"
   },
 ];
 
@@ -192,8 +110,6 @@ export default {
   data() {
     return {
       leftDrawerOpen: false,
-      familyOptionsList: familyOptions,
-      organizationOptionsList: organizationOptions,
       userOptionsList: userOptions
     };
   },

@@ -1,13 +1,14 @@
 <template>
   <q-page class="flex flex-center">
-    <h2>Dashboard page where all user actions can be viewed</h2>
-    <p>{{ type }}</p>
+    <h2>Dashboard page for the {{ type }}</h2>
     <div class="q-pa-md">
       <div class="row justify-center q-gutter-sm" v-if="type == 'family'">
         <q-intersection
           v-for="option in familyOptionsList"
           :key="option.title"
-          class="example-item"
+          class="cards"
+          once
+          transition="scale"
         >
           <MainOption v-bind="option"></MainOption>
         </q-intersection>
@@ -16,7 +17,9 @@
         <q-intersection
           v-for="option in organizationOptionsList"
           :key="option.title"
-          class="example-item"
+          class="cards"
+          once
+          transition="scale"
         >
           <MainOption v-bind="option"></MainOption>
         </q-intersection>
@@ -25,7 +28,9 @@
         <q-intersection
           v-for="option in userOptionsList"
           :key="option.title"
-          class="example-item"
+          class="cards"
+          once
+          transition="scale"
         >
           <MainOption v-bind="option"></MainOption>
         </q-intersection>
@@ -37,63 +42,69 @@
 <script>
 import MainOption from "components/MainOption.vue";
 
-const defaultOptions = [
-  {
-    title: "Feed",
-    caption: "/.",
-    icon: "house",
-    link: "/feed"
-  },
-  {
-    title: "Chat",
-    caption: "/chat",
-    icon: "house",
-    link: "/chat"
-  },
-  {
-    title: "Events",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  }
-];
-
-let organizationOptions = defaultOptions;
-organizationOptions.push({
-  title: "Donate",
-  caption: "/.",
-  icon: "house",
-  link: "/donate"
-});
-
-let familyOptions = defaultOptions;
-familyOptions.push({
-  title: "Donate",
-  caption: "/.",
-  icon: "house",
-  link: "/donate"
-});
-
 const userOptions = [
   {
     title: "Feed",
-    caption: "/.",
-    icon: "house",
+    icon: "speaker_notes",
+    link: "/user/feed"
+  },
+  {
+    title: "Chat",
+    icon: "question_answer",
+    link: "/user/chat"
+  },
+  {
+    title: "Events",
+    icon: "today",
+    link: "/user/event"
+  }
+];
+const organizationOptions = [
+  {
+    title: "Feed",
+    icon: "speaker_notes",
     link: "/feed"
   },
   {
     title: "Chat",
-    caption: "/chat",
-    icon: "house",
+    icon: "question_answer",
     link: "/chat"
   },
   {
     title: "Events",
-    caption: "/.",
+    icon: "today",
+    link: "/event"
+  },
+  {
+    title: "Donation",
     icon: "house",
-    link: "/events"
+    link: "/donate"
   }
 ];
+
+const familyOptions = [
+  {
+    title: "Feed",
+    icon: "speaker_notes",
+    link: "/feed"
+  },
+  {
+    title: "Chat",
+    icon: "question_answer",
+    link: "/chat"
+  },
+  {
+    title: "Events",
+    icon: "today",
+    link: "/event"
+  },
+  {
+    title: "Donate",
+    icon: "house",
+    link: "/donate"
+  }
+];
+
 
 export default {
   name: "Index",
@@ -119,8 +130,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.example-item {
-  height: 290px;
-  width: 290px;
-}
+// .cards {
+//   height: 250px;
+//   width: 30%;
+// }
 </style>

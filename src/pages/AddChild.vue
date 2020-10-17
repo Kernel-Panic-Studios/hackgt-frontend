@@ -18,7 +18,7 @@
           <q-btn
             label="GO Back"
             @click="goBack"
-            color="primary"
+            color="positive"
             flat
             class="q-ml-sm"
           />
@@ -57,9 +57,19 @@ export default {
           this.data = response.data;
           if ("error" in this.data) {
             console.log("fail");
+            this.$q.notify({
+              message: "Child addition failed!",
+              color: "red",
+              timeout: 1500
+            });
           } else {
             console.log(this.data);
             console.log("success");
+            this.$q.notify({
+              message: "Child Added!",
+              color: "red",
+              timeout: 1500
+            });
             // this.$store.commit("user/setUserType", this.data.type);
             // console.log(this.data.type);
             this.$router.push("/" + this.userType);
