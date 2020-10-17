@@ -73,7 +73,7 @@ const organizationOptions = [
   {
     title: "Events",
     icon: "today",
-    link: "/event"
+    link: "/events"
   },
   {
     title: "Donation",
@@ -96,7 +96,7 @@ const familyOptions = [
   {
     title: "Events",
     icon: "today",
-    link: "/event"
+    link: "/events"
   },
   {
     title: "Donate",
