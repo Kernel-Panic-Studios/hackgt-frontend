@@ -70,7 +70,7 @@ export default {
         });
     },
     sendMessage() {
-      var sender = this.family.email;
+      let sender = this.family.email;
       if (this.type == 'child') {
         sender = this.child.id;
       }
