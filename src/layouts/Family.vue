@@ -36,7 +36,7 @@
           Essential Links
         </q-item-label>
         <InternalLink
-          v-for="link in familyOptions"
+          v-for="link in familyOptionsList"
           :key="link.title"
           v-bind="link"
         />
