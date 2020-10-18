@@ -82,7 +82,7 @@ const familyOptions = [
   {
     title: "Feed",
     icon: "speaker_notes",
-    link: "/child/feed"
+    link: "/family/child/feed"
   },
   {
     title: "Chat",
