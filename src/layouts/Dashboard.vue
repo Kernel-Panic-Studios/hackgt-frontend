@@ -72,12 +72,12 @@ const familyOptions = [
   {
     title: "Home",
     icon: "house",
-    link: "/children"
+    link: "/family/children"
   },
   {
     title: "Child",
     icon: "speaker_notes",
-    link: "/child/index"
+    link: "/family/child/index"
   },
   {
     title: "Feed",
@@ -87,17 +87,17 @@ const familyOptions = [
   {
     title: "Chat",
     icon: "question_answer",
-    link: "/child/chat"
+    link: "/family/child/chat"
   },
   {
     title: "Events",
     icon: "today",
-    link: "/child/events"
+    link: "/family/child/events"
   },
   {
     title: "Donate",
     icon: "card_giftcard",
-    link: "/child/donate"
+    link: "/family/child/donate"
   }
 ];
 const organizationOptions = [

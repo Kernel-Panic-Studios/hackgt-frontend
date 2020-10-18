@@ -25,15 +25,7 @@
           transition="scale"
           class="child-card"
         >
-          <UserCard :type="type" :family="family" :child="child" />
-          <!-- <q-card class="q-ma-sm">
-            <img src="https://cdn.quasar.dev/img/mountains.jpg" />
-
-            <q-card-section>
-              <div class="text-h6">Child #{{ index }}</div>
-              <div class="text-subtitle2">by John Doe</div>
-            </q-card-section>
-          </q-card> -->
+          <UserCard :type="type" :family="child.family" :child="child" />
         </q-intersection>
       </div>
     </div>
@@ -57,7 +49,7 @@ const familyLinksData = [
   {
     title: "Find an Organization",
     icon: "launch",
-    link: "/organizations"
+    link: "/family/organizations"
   }
 ];
 
@@ -75,7 +67,7 @@ export default {
     };
   },
   methods: {},
-  created: function() {
+  mounted() {
     if (this.$q.localStorage.getItem("type") == "child") {
       this.$q.localStorage.set(
         "type",

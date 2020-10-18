@@ -48,7 +48,7 @@ export default {
               color: "#21ba45",
               timeout: 1500
             });
-            this.$router.push("/family");
+            this.$router.push("/family/children");
           }
         })
         .catch(() => {
