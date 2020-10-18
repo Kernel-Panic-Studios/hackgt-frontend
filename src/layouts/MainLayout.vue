@@ -74,7 +74,7 @@ const userOptions = [
   {
     title: "Home",
     icon: "house",
-    link: "/user"
+    link: "/user/index"
   },
   {
     title: "Feed",

@@ -26,8 +26,9 @@
           :field-name="email.replace('.', '-') + '-' + id"
           url="https://hackgt.azurewebsites.net/upload"
           @uploaded="uploaded"
-          style="width: 100%;"
+          style="width: 100%; height:200px"
           label="Profile Picture"
+          accept=".jpg, image/*"
           auto-upload
           :disable="(id == null || id == '') ? true : false"
         />

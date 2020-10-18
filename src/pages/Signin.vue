@@ -50,12 +50,12 @@ export default {
   name: "Signin",
   data() {
     return {
-      // email: "abc@123.com",
-      // password: "abc123",
+      email: "abc@123.com",
+      password: "abc123",
       enteredType: null,
       typeOptions: ["Organization", "Family"],
-      email: "",
-      password: "",
+      // email: "",
+      // password: "",
       // email: "joe@statefarm.com",
       // password: "Joe",
       accept: false

@@ -33,14 +33,14 @@ const routes = [
     path: "/organization/child",
     component: () => import("layouts/Dashboard.vue"),
     children: [
-      { path: "", component: () => import("pages/Index.vue") },
+      { path: "/index", component: () => import("pages/Index.vue") },
       { path: "/feed", component: () => import("pages/Feed.vue") },
       { path: "/chat", component: () => import("pages/Chat.vue") },
       { path: "/events", component: () => import("pages/Events.vue") }
     ]
   },
   {
-    path: "/user",
+    path: "/user/index",
     component: () => import("layouts/MainLayout.vue"),
     children: [
       { path: "", component: () => import("pages/Index.vue") },
