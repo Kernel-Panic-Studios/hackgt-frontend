@@ -72,27 +72,32 @@ const familyOptions = [
   {
     title: "Home",
     icon: "house",
-    link: "/index"
+    link: "/children"
+  },
+  {
+    title: "Child",
+    icon: "speaker_notes",
+    link: "/child/index"
   },
   {
     title: "Feed",
     icon: "speaker_notes",
-    link: "/feed"
+    link: "/child/feed"
   },
   {
     title: "Chat",
     icon: "question_answer",
-    link: "/chat"
+    link: "/child/chat"
   },
   {
     title: "Events",
     icon: "today",
-    link: "/events"
+    link: "/child/events"
   },
   {
     title: "Donate",
     icon: "card_giftcard",
-    link: "/donate"
+    link: "/child/donate"
   }
 ];
 const organizationOptions = [
@@ -104,27 +109,27 @@ const organizationOptions = [
   {
     title: "Home",
     icon: "house",
-    link: "/"
+    link: "/organization/children"
   },
   {
     title: "Feed",
     icon: "speaker_notes",
-    link: "/feed"
+    link: "/organization/child/feed"
   },
   {
     title: "Chat",
     icon: "question_answer",
-    link: "/chat"
+    link: "/organization/child/chat"
   },
   {
     title: "Events",
     icon: "today",
-    link: "/events"
+    link: "/organization/child/events"
   },
   {
     title: "Donate",
     icon: "card_giftcard",
-    link: "/donate"
+    link: "/organization/child/donate"
   }
 ];
 
