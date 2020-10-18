@@ -1,0 +1,12 @@
+{
+  "name": "hackgt-frontend",
+  "version": "0.0.1",
+  "description": "A Quasar Framework app",
+  "author": "Victor GUYARD <19635051+FlipFloop@users.noreply.github.com>",
+  "private": true,
+  "dependencies": {
+    "@capacitor/cli": "^2.0.0",
+    "@capacitor/core": "^2.0.0",
+    "@capacitor/ios": "^2.4.2"
+  }
+}
