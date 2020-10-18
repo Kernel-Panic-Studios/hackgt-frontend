@@ -77,7 +77,7 @@ export default {
           id: this.id,
           organization: this.email,
           bio: this.bio,
-          profile_pic: this.file.replace(".", "-")
+          profile_pic: this.file
         })
         .then(response => {
           this.data = response.data;

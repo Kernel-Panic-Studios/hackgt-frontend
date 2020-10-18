@@ -25,7 +25,7 @@
           transition="scale"
           class="child-card"
         >
-          <UserCard :type="type" :name="child.name" :id="child.id" :family="child.family" :profile="child.profile_pic" />
+          <UserCard :type="type" :family="family" :child="child" />
           <!-- <q-card class="q-ma-sm">
             <img src="https://cdn.quasar.dev/img/mountains.jpg" />
 
@@ -110,6 +110,11 @@ export default {
         return this.$q.localStorage.getItem(
           this.$q.localStorage.getItem("type")
         ).name;
+      }
+    },
+    family: {
+      get() {
+        return this.$q.localStorage.getItem("family");
       }
     }
   }
