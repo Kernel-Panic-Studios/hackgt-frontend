@@ -21,7 +21,7 @@
         />
         <q-input
           filled
-          type="string"
+          type="password"
           v-model="password"
           label="Password"
           hint="password"
