@@ -9,9 +9,9 @@ const routes = [
   },
   {
     path: "/family",
-    component: () => import("layouts/Dashboard.vue"),
+    component: () => import("layouts/Landing.vue"),
     children: [
-      { path: "", component: () => import("pages/Users.vue") },
+      { path: "/children", component: () => import("pages/Users.vue") },
       { path: "/child", component: () => import("pages/Index.vue") },
       { path: "/chat", component: () => import("pages/Chat.vue") },
       { path: "/feed", component: () => import("pages/Feed.vue") },
@@ -21,12 +21,19 @@ const routes = [
     ]
   },
   {
-    path: "/organization",
+    path: "/organization/children",
     component: () => import("layouts/Dashboard.vue"),
     children: [
       { path: "", component: () => import("pages/Users.vue") },
       // { path: "/child", component: () => import("pages/Index.vue") },
-      { path: "/addchild", component: () => import("pages/AddChild.vue") }
+      // { path: "/addchild", component: () => import("pages/AddChild.vue") }
+    ]
+  },
+  {
+    path: "/organization/addchild",
+    component: () => import("layouts/Dashboard.vue"),
+    children: [
+      { path: "", component: () => import("pages/AddChild.vue") }
     ]
   },
   {

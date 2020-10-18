@@ -49,7 +49,7 @@ const organizationLinksData = [
   {
     title: "Add Child",
     icon: "library_add",
-    link: "/addchild"
+    link: "/organization/addchild"
   }
 ];
 

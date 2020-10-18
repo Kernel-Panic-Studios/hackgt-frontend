@@ -30,7 +30,7 @@
           label="Profile Picture"
           accept=".jpg, image/*"
           auto-upload
-          :disable="(id == null || id == '') ? true : false"
+          :disable="id == null || id == '' ? true : false"
         />
 
         <div>
@@ -77,7 +77,7 @@ export default {
           id: this.id,
           organization: this.email,
           bio: this.bio,
-          profile_pic: this.file.replace('.', '-')
+          profile_pic: this.file.replace(".", "-")
         })
         .then(response => {
           this.data = response.data;
@@ -93,12 +93,12 @@ export default {
             console.log("success");
             this.$q.notify({
               message: "Child Added!",
-              color: "#21ba45",
+              color: "green",
               timeout: 1500
             });
             // this.$store.commit("user/setUserType", this.data.type);
             // console.log(this.data.type);
-            this.$router.push("/" + this.userType);
+            this.$router.push("/" + this.userType + "/children");
           }
         })
         .catch(() => {
@@ -106,10 +106,10 @@ export default {
         });
     },
     goBack() {
-      this.$router.push("/" + this.userType);
+      this.$router.push("/" + this.userType + "/children");
     },
     uploaded(f) {
-      this.file = this.email.replace('.', '-') + '-' + this.id;
+      this.file = this.email.replace(".", "-") + "-" + this.id;
     }
   },
   computed: {

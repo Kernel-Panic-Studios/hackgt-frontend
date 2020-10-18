@@ -1,6 +1,13 @@
 <template>
   <q-card class="q-ma-sm q-mb-md center-all" to="/User">
-    <img :src="(profile != null && profile.length > 0) ? profile : 'https://cdn.quasar.dev/img/mountains.jpg'" />
+    <img
+      :src="
+        profile != null && profile.length > 0
+          ? profile
+          : 'https://cdn.quasar.dev/img/mountains.jpg'
+      "
+      style='max-height:200px'
+    />
 
     <q-card-section>
       <div class="text-h6 child-card-info">
@@ -122,7 +129,7 @@ export default {
             } else {
               this.getUser("family", this.data.family);
             }
-            this.$router.push("/organization/child");
+            this.$router.push("/child");
           }
         })
         .catch(() => {

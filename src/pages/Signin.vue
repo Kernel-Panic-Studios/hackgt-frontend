@@ -83,7 +83,7 @@ export default {
             console.log(this.data.type);
             this.$q.localStorage.set("type", this.enteredType.toLowerCase());
             this.$q.localStorage.set(this.enteredType.toLowerCase(), this.data);
-            this.$router.push("/" + this.data.type);
+            this.$router.push("/" + this.data.type + "/children");
           }
         })
         .catch(() => {

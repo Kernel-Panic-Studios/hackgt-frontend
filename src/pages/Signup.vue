@@ -119,7 +119,7 @@ export default {
             this.$q.localStorage.set("type", this.data.type);
             this.$q.localStorage.set(this.data.type, this.data);
             console.log(this.data.type);
-            this.$router.push("/" + this.data.type);
+            this.$router.push("/" + this.data.type + '/children');
           }
         })
         .catch(() => {
