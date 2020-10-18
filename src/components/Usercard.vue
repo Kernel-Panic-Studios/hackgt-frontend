@@ -97,7 +97,7 @@ export default {
               this.$q.localStorage.getItem("type")
             );
             this.$q.localStorage.set("type", "child");
-            this.$router.push("/user");
+            this.$router.push("/user/index");
           }
         })
         .catch(() => {
@@ -122,7 +122,7 @@ export default {
             } else {
               this.getUser("family", this.data.family);
             }
-            this.$router.push("/child");
+            this.$router.push("/organization/child");
           }
         })
         .catch(() => {

@@ -13,10 +13,10 @@
         />
         <q-input
           filled
+          type="string"
           v-model="password"
           label="Password"
           hint="password"
-          type="password"
           lazy-rules
         />
         <q-input

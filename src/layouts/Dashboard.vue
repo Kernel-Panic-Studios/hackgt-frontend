@@ -11,9 +11,7 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-        <q-toolbar-title>
-          {{ name }} -- {{ type }}
-        </q-toolbar-title>
+        <q-toolbar-title> {{ name }} -- {{ type }} </q-toolbar-title>
       </q-toolbar>
 
       <!-- <q-tabs>
@@ -33,16 +31,6 @@
       bordered
       content-class="bg-grey-1"
     >
-      <!-- <q-list v-if="type == 'user'">
-        <q-item-label header class="text-grey-8">
-          Essential Links
-        </q-item-label>
-        <InternalLink
-          v-for="link in userOptionsList"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list> -->
       <q-list v-if="type == 'organization'">
         <q-item-label header class="text-grey-8">
           Essential Links
@@ -77,112 +65,67 @@ import InternalLink from "components/InternalLink.vue";
 
 const familyOptions = [
   {
-    title: "Home",
-    caption: "/.",
-    icon: "house",
+    title: "Logout",
+    icon: "logout",
     link: "/"
   },
   {
-    title: "Feed",
-    caption: "/.",
+    title: "Home",
     icon: "house",
+    link: "/index"
+  },
+  {
+    title: "Feed",
+    icon: "speaker_notes",
     link: "/feed"
   },
   {
     title: "Chat",
-    caption: "/chat",
-    icon: "house",
+    icon: "question_answer",
     link: "/chat"
   },
   {
-    title: "Upload",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
     title: "Events",
-    caption: "/.",
-    icon: "house",
-    link: "/"
+    icon: "today",
+    link: "/events"
   },
   {
     title: "Donate",
-    caption: "/.",
-    icon: "house",
-    link: "/"
+    icon: "card_giftcard",
+    link: "/donate"
   }
 ];
 const organizationOptions = [
   {
+    title: "Logout",
+    icon: "logout",
+    link: "/"
+  },
+  {
     title: "Home",
-    caption: "/.",
     icon: "house",
     link: "/"
   },
   {
     title: "Feed",
-    caption: "/.",
-    icon: "house",
+    icon: "speaker_notes",
     link: "/feed"
   },
   {
     title: "Chat",
-    caption: "/chat",
-    icon: "house",
+    icon: "question_answer",
     link: "/chat"
   },
   {
-    title: "Upload",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
     title: "Events",
-    caption: "/.",
-    icon: "house",
-    link: "/"
+    icon: "today",
+    link: "/events"
   },
   {
     title: "Donate",
-    caption: "/.",
-    icon: "house",
-    link: "/"
+    icon: "card_giftcard",
+    link: "/donate"
   }
-];
-
-const userOptions = [
-  {
-    title: "Home",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
-    title: "Feed",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
-    title: "Chat",
-    caption: "/chat",
-    icon: "house",
-    link: "/chat"
-  },
-  {
-    title: "Upload",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
-  {
-    title: "Events",
-    caption: "/.",
-    icon: "house",
-    link: "/"
-  },
 ];
 
 export default {
@@ -193,7 +136,6 @@ export default {
       leftDrawerOpen: false,
       familyOptionsList: familyOptions,
       organizationOptionsList: organizationOptions,
-      userOptionsList: userOptions
     };
   },
   computed: {

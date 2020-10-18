@@ -77,7 +77,7 @@ const organizationOptions = [
   },
   {
     title: "Donation",
-    icon: "house",
+    icon: "card_giftcard",
     link: "/donate"
   }
 ];
@@ -100,7 +100,7 @@ const familyOptions = [
   },
   {
     title: "Donate",
-    icon: "house",
+    icon: "card_giftcard",
     link: "/donate"
   }
 ];
