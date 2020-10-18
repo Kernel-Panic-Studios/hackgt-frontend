@@ -5,7 +5,7 @@
         <q-chat-message
           v-for="(m, index) in messages"
           :key="index"
-          :text="[m.text]"
+          :text="translateMessage(m, index)"
           :name="
             m.sender == username
               ? 'me'
@@ -24,7 +24,6 @@
       </div>
     </div>
     <q-input
-      v-if="type !== 'organization'"
       filled
       fixed="bottom"
       v-model="text"
@@ -88,6 +87,16 @@ export default {
           console.log("fail");
         });
     },
+    translateMessage(m, index) {
+      if (m.text.includes('Translation: ')) {
+        if (m.sender != this.username) {
+          return [m.text.split('Translation: ')[0], '<i>Translation: ' + m.text.split('Translation: ')[1] + '</i>']
+        } else {
+          return [m.text.split('Translation: ')[0]]
+        }
+      }
+      return [m.text];
+    },
     sendMessage() {
       let sender = this.family.email;
       if (this.type == "child") {
@@ -110,7 +119,7 @@ export default {
     }
   },
   created: function() {
-    setInterval(() => this.loadMessages(), 2000);
+    setInterval(() => this.loadMessages(), 5000);
   }
 };
 </script>
