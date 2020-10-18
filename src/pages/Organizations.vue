@@ -17,7 +17,6 @@
           class="example-item"
         >
         <br />
-        <br />
           <OrganizationCard
             :name="org.name"
             :email="org.email"
