@@ -34,7 +34,7 @@ export default {
   methods: {
     supportOrg() {
       axios
-        .post("https://hackgt.azurewebsites.net/family/addChild", {
+        .post("http://localhost:5000/family/addChild", {
           family: this.$q.localStorage.getItem("family").email,
           organization: this.email
         })
