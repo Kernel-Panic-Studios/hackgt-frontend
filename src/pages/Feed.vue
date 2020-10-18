@@ -3,12 +3,22 @@
     <div class="q-pa-md row justify-center">
       <div style="width: 100%; max-width: 80%">
         <q-card class="my-card q-ma-md" v-for="(p, index) in posts" :key="index">
+          <q-item>
+            <q-item-section avatar>
+              <q-avatar>
+                <img :src="p.profile_picture != null && p.profile_picture.length > 0 ? p.profile_picture : 'https://cdn.quasar.dev/img/mountains.jpg'">
+              </q-avatar>
+            </q-item-section>
+
+            <q-item-section>
+              <q-item-label>{{ p.name }}</q-item-label>
+              <q-item-label caption>{{ p.created_at }}</q-item-label>
+            </q-item-section>
+          </q-item>
           <img v-if="p.file && (p.file.split('files/')[1].split('?')[0].split('.')[1] == 'jpg' || p.file.split('files/')[1].split('?')[0].split('.')[1] == 'png')" :src="files[index]">
           <q-btn v-else-if="p.file" color="primary" class="full-width" label="Download Document" type="a" :href="p.file" target="_blank" />
-
           <q-card-section>
             <div class="text-h6">{{ p.text }}</div>
-            <div class="text-subtitle2">Posted by <b>{{ p.name }}</b>, {{ p.created_at }}</div>
           </q-card-section>
         </q-card>
 
@@ -20,7 +30,7 @@
       </div>
       <q-uploader
         :field-name="fileData"
-        url="http://hackgt.azurewebsites.net/upload"
+        url="http://localhost:5000/upload"
         @uploaded="uploaded"
         style="max-width: 300px"
         auto-upload
@@ -51,7 +61,7 @@ export default {
       this.organization = this.$q.localStorage.getItem('organization');
       this.fileData = this.child.name + this.family.email.replace('.', '-') + Date.now().toString();
       axios
-        .get("http://hackgt.azurewebsites.net/feed/" + this.child.id)
+        .get("http://localhost:5000/feed/" + this.child.id)
         .then(response => {
           this.posts = response.data;
           console.log(this.posts)
@@ -79,14 +89,15 @@ export default {
       console.log(this.file);
     },
     createPost() {
+      const type = this.$q.localStorage.getItem('type');
       var sender = this.family.email;
-      if (this.type == 'child') {
+      if (type == 'child') {
         sender = this.child.id;
+      } else if (type == 'organization') {
+        sender = this.organization.email;
       }
-      console.log(this.type);
-      console.log(this.file)
       axios
-        .post("http://hackgt.azurewebsites.net/post", {
+        .post("http://localhost:5000/post", {
           child: this.child.id,
           family: this.family.email,
           organization: this.organization.email,
