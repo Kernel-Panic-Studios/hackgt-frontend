@@ -19,7 +19,7 @@
 
     <q-card-actions class="user-card-buttons">
       <q-btn
-        class="user-card-button primary-border q-ma-sm"
+        class="user-card-button primary-border q-mx-md"
         flat
         v-if="family != null && child.family != null"
         @click="viewChild"
@@ -66,7 +66,7 @@ export default {
   props: {
     child: Object,
     type: String,
-    family: Object,
+    family: String,
     profile: String
   },
   data() {

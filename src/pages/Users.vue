@@ -67,7 +67,12 @@ export default {
     };
   },
   methods: {},
+<<<<<<< HEAD
   mounted() {
+=======
+  created: function() {
+    console.log(this.$q.localStorage.getAllKeys());
+>>>>>>> 21c85594c7ee7c00fc5b72c60933125236a8e0d4
     if (this.$q.localStorage.getItem("type") == "child") {
       this.$q.localStorage.set(
         "type",
@@ -104,11 +109,6 @@ export default {
         ).name;
       }
     },
-    family: {
-      get() {
-        return this.$q.localStorage.getItem("family");
-      }
-    }
   }
 };
 </script>

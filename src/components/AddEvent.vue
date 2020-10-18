@@ -20,13 +20,6 @@
             color="primary"
             :disable="title.length == 0 ? true : false"
           />
-          <q-btn
-            label="GO Back"
-            @click="goBack"
-            color="positive"
-            flat
-            class="q-ml-sm"
-          />
         </div>
       </q-form>
     </div>
@@ -78,9 +71,6 @@ export default {
         .catch(() => {
           console.log("fail");
         });
-    },
-    goBack() {
-      this.$router.push("/" + this.userType + "/child/index");
     }
   },
   computed: {
