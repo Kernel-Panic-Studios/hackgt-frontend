@@ -63,22 +63,22 @@ const organizationOptions = [
   {
     title: "Feed",
     icon: "speaker_notes",
-    link: "/feed"
+    link: "/organization/child/feed"
   },
   {
     title: "Chat",
     icon: "question_answer",
-    link: "/chat"
+    link: "/organization/child/chat"
   },
   {
     title: "Events",
     icon: "today",
-    link: "/events"
+    link: "/organization/child/events"
   },
   {
-    title: "Donation",
+    title: "Donate",
     icon: "card_giftcard",
-    link: "/donate"
+    link: "/organization/child/donate"
   }
 ];
 
@@ -86,22 +86,22 @@ const familyOptions = [
   {
     title: "Feed",
     icon: "speaker_notes",
-    link: "/feed"
+    link: "/family/child/feed"
   },
   {
     title: "Chat",
     icon: "question_answer",
-    link: "/chat"
+    link: "/family/child/chat"
   },
   {
     title: "Events",
     icon: "today",
-    link: "/events"
+    link: "/family/child/events"
   },
   {
     title: "Donate",
     icon: "card_giftcard",
-    link: "/donate"
+    link: "/family/child/donate"
   }
 ];
 

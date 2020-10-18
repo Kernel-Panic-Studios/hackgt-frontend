@@ -1,7 +1,15 @@
 <template>
   <q-page padding>
-    <div class="q-pa-md fixed-center" style="max-width: 40%">
-      <h2>Create an account</h2>
+    <div class="q-pa-md absolute-center" style="max-width: 40%">
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <h4 class = 'center-all'>Create an account</h4>
       <q-form @submit="signup" class="q-gutter-md">
         <q-input
           filled
@@ -45,13 +53,13 @@
           :field-name="email.replace('.', '-')"
           url="https://hackgt.azurewebsites.net/upload"
           @uploaded="uploaded"
-          style="width: 100%;"
+          style="width: 100%; height:200px"
           label="Profile Picture"
           auto-upload
           :disable="email.length == 0 ? true : false"
         />
 
-        <div class = 'center-all'>
+        <div class="center-all">
           <q-btn
             class="sign-button"
             label="Sign Up"
@@ -88,7 +96,7 @@ export default {
       bio: "",
       file: null,
       enteredType: null,
-      typeOptions: ["Organization", "Family"],
+      typeOptions: ["Organization", "Family"]
       // email: "joe@statefarm.com",
       // password: "Joe",
       // enteredType: "family",
@@ -98,13 +106,16 @@ export default {
     signup() {
       console.log("hi");
       axios
-        .post("https://hackgt.azurewebsites.net/" + this.enteredType.toLowerCase(), {
-          email: this.email,
-          password: this.password,
-          name: this.name,
-          bio: this.bio,
-          profile_pic: this.file
-        })
+        .post(
+          "https://hackgt.azurewebsites.net/" + this.enteredType.toLowerCase(),
+          {
+            email: this.email,
+            password: this.password,
+            name: this.name,
+            bio: this.bio,
+            profile_pic: this.file
+          }
+        )
         .then(response => {
           this.data = response.data;
           if ("error" in this.data) {
@@ -119,7 +130,7 @@ export default {
             this.$q.localStorage.set("type", this.data.type);
             this.$q.localStorage.set(this.data.type, this.data);
             console.log(this.data.type);
-            this.$router.push("/" + this.data.type + '/children');
+            this.$router.push("/" + this.data.type + "/children");
           }
         })
         .catch(() => {
@@ -127,9 +138,13 @@ export default {
         });
     },
     uploaded(f) {
-      this.file = this.email.replace('.', '-');
+      this.file = this.email.replace(".", "-");
     }
   }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h4 {
+  // margin-top: 30%;
+}
+  </style>

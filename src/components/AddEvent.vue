@@ -80,7 +80,7 @@ export default {
         });
     },
     goBack() {
-      this.$router.push("/" + this.userType);
+      this.$router.push("/" + this.userType + "/child/index");
     }
   },
   computed: {
