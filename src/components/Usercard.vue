@@ -130,7 +130,7 @@ export default {
             } else {
               this.getUser("family", this.data.family);
             }
-            this.$router.push("/child");
+            this.$router.push("/" + this.$q.localStorage.getItem("prevType") + "/child/index");
           }
         })
         .catch(() => {
