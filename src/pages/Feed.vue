@@ -48,6 +48,7 @@ export default {
     loadPosts() {
       this.child = this.$q.localStorage.getItem('child');
       this.family = this.$q.localStorage.getItem('family');
+      this.organization = this.$q.localStorage.getItem('organization');
       this.fileData = this.child.name + this.family.email.replace('.', '-') + Date.now().toString();
       axios
         .get("http://hackgt.azurewebsites.net/feed/" + this.child.id)
@@ -82,11 +83,13 @@ export default {
       if (this.type == 'child') {
         sender = this.child.id;
       }
+      console.log(this.type);
       console.log(this.file)
       axios
         .post("http://hackgt.azurewebsites.net/post", {
           child: this.child.id,
           family: this.family.email,
+          organization: this.organization.email,
           sender: sender,
           text: this.text,
           file: this.file

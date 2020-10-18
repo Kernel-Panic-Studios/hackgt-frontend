@@ -1,10 +1,10 @@
 <template>
   <q-card class="q-ma-sm q-mb-md center-all" to="/User">
-    <img :src="(profile != null && profile.length > 0) ? profile : 'https://cdn.quasar.dev/img/mountains.jpg'" />
+    <img :src="(child.profile_pic != null && child.profile_pic.length > 0) ? child.profile_pic : 'https://cdn.quasar.dev/img/mountains.jpg'" />
 
     <q-card-section>
       <div class="text-h6 child-card-info">
-        {{ name }}
+        {{ child.name }}
       </div>
       <!-- <div class="text-h6">Child #{{ id }}</div> -->
     </q-card-section>
@@ -15,20 +15,20 @@
       <q-btn
         class="user-card-button primary-border q-ma-sm"
         flat
-        v-if="family != null && family.length > 0"
+        v-if="family != null && child.family != null"
         @click="viewChild"
         >View Child</q-btn
       >
       <q-btn
         class="user-card-button primary-border q-ma-sm"
-        v-if="type == 'organization' && family != null && family.length > 0"
+        v-if="type == 'organization' && family != null && child.family != null"
         flat
         @click="expanded = !expanded"
         >Log In</q-btn
       >
       <q-btn
         class="user-card-button primary-border q-ma-sm full-width"
-        v-if="type == 'organization' && (family == null || family.length == 0)"
+        v-if="type == 'organization' && (family == null || child.family == null)"
         flat
         disabled
         >No Supporting Family Yet</q-btn
@@ -56,8 +56,7 @@ import axios from "axios";
 export default {
   name: "UserCard",
   props: {
-    name: String,
-    id: Number,
+    child: Object,
     type: String,
     family: Object,
     profile: String
@@ -71,11 +70,12 @@ export default {
   },
   mounted() {
     this.newId = null;
+    console.log(this.family);
   },
   methods: {
     login() {
       console.log("hi");
-      if (this.newId != this.id) {
+      if (this.newId != this.child.id) {
         console.log("fail");
         return;
       }
@@ -106,7 +106,7 @@ export default {
     },
     viewChild() {
       axios
-        .get("https://hackgt.azurewebsites.net/child/" + this.id)
+        .get("https://hackgt.azurewebsites.net/child/" + this.child.id)
         .then(response => {
           this.data = response.data;
           if ("error" in this.data) {

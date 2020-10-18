@@ -103,7 +103,7 @@ export default {
           password: this.password,
           name: this.name,
           bio: this.bio,
-          profile_pic: this.file.replace('.', '-')
+          profile_pic: this.file
         })
         .then(response => {
           this.data = response.data;
@@ -127,7 +127,7 @@ export default {
         });
     },
     uploaded(f) {
-      this.file = this.email;
+      this.file = this.email.replace('.', '-');
     }
   }
 };
