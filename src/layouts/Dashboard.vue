@@ -13,7 +13,12 @@
         />
         <q-toolbar-title> {{ name }} -- {{ type }} </q-toolbar-title>
       </q-toolbar>
-
+      <div class="q-pa-md">
+        <q-video
+          :ratio="16 / 9"
+          src="https://www.youtube.com/embed/G2CS57pGmWM?rel=0"
+        />
+      </div>
       <!-- <q-tabs>
         <q-route-tab icon="map" to="/your/route" replace label="One Tab" />
         <q-route-tab
@@ -140,7 +145,7 @@ export default {
     return {
       leftDrawerOpen: false,
       familyOptionsList: familyOptions,
-      organizationOptionsList: organizationOptions,
+      organizationOptionsList: organizationOptions
     };
   },
   computed: {
