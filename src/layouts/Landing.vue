@@ -2,8 +2,8 @@
   <q-layout view="hHh Lpr fFf">
     <!-- (Optional) The Header -->
     <q-header elevated>
-      <q-toolbar>
-        <q-btn
+      <q-toolbar style='height: 50px'>
+        <q-icon
           flat
           round
           dense
@@ -11,37 +11,13 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-        <q-toolbar-title> {{ name }} -- {{ type }} </q-toolbar-title>
+        <img
+          src="/logo.png"
+          style="height: 40px; max-width: 150px"
+        />
+        <q-toolbar-title> famly </q-toolbar-title>
       </q-toolbar>
-
-      <!-- <q-tabs>
-        <q-route-tab icon="map" to="/your/route" replace label="One Tab" />
-        <q-route-tab
-          icon="assignment"
-          to="/some/other/route"
-          replace
-          label="Other Tab"
-        />
-      </q-tabs> -->
     </q-header>
-
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
-      <q-list v-if="type == 'family'">
-        <q-item-label header class="text-grey-8">
-          Essential Links
-        </q-item-label>
-        <InternalLink
-          v-for="link in familyOptions"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
 
     <q-page-container>
       <!-- This is where pages get injected -->
@@ -51,30 +27,8 @@
 </template>
 
 <script>
-import InternalLink from "components/InternalLink.vue";
-
-const familyOptions = [
-  {
-    title: "Logout",
-    icon: "logout",
-    link: "/"
-  },
-  {
-    title: "Home",
-    icon: "house",
-    link: "/family/children"
-  }
-];
-
 export default {
   name: "Dashboard",
-  components: { InternalLink },
-  data() {
-    return {
-      leftDrawerOpen: false,
-      familyOptionsList: familyOptions,
-    };
-  },
   computed: {
     name: {
       get() {

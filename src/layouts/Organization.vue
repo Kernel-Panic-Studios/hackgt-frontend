@@ -11,7 +11,11 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-        <q-toolbar-title> {{ name }} -- {{ type }} </q-toolbar-title>
+        <q-toolbar-title> {{ name }} </q-toolbar-title>
+        <img
+          src="/logo.png"
+          style="height: 40px; max-width: 150px"
+        />
       </q-toolbar>
 
       <!-- <q-tabs>

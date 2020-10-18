@@ -11,18 +11,12 @@
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
-        <q-toolbar-title> {{ name }} -- {{ type }} </q-toolbar-title>
-      </q-toolbar>
-
-      <!-- <q-tabs>
-        <q-route-tab icon="map" to="/your/route" replace label="One Tab" />
-        <q-route-tab
-          icon="assignment"
-          to="/some/other/route"
-          replace
-          label="Other Tab"
+        <q-toolbar-title> {{ name }} </q-toolbar-title>
+        <img
+          src="/logo.png"
+          style="height: 40px; max-width: 150px"
         />
-      </q-tabs> -->
+      </q-toolbar>
     </q-header>
 
     <q-drawer

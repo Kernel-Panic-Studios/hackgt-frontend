@@ -1,9 +1,12 @@
 <template>
   <q-page padding>
     <!-- content -->
-    <!-- <q-btn @click="loadData()">Get data</q-btn> -->
     <div class="q-pa-sd fixed-center" style="max-width: 40%">
-      <h2>Login</h2>
+      <div class="center-all">
+      <img src="/famly.png"/>
+
+      </div>
+      <h4>Login</h4>
       <q-form @submit="login" class="q-gutter-md">
         <q-input
           filled
@@ -92,4 +95,8 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h4 {
+  text-align: center;
+}
+</style>

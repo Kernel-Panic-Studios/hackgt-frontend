@@ -51,7 +51,7 @@ const routes = [
   },
   {
     path: "/family/organizations",
-    component: () => import("layouts/Dashboard.vue"),
+    component: () => import("layouts/Family.vue"),
     children: [
       {path: "",component: () => import("pages/Organizations.vue")}
     ]

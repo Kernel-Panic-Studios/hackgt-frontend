@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center">
     <h1>{{ name }}</h1>
-    <h2>This is where the {{ type }} see the organizations</h2>
+    <h2>Here are avilable organizations</h2>
     <div v-if="type == 'family'">
       <InternalLink
         v-for="link in familyLinks"

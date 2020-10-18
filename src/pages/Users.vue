@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <h2>Welcome {{ personName }}, here are the children in your {{ type }}</h2>
+    <h2>Here are the children in your {{ type }}</h2>
     <div v-if="type == 'organization'">
       <AddChildButton
         v-for="link in organizationLinks"

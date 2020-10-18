@@ -12,8 +12,12 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
         <q-toolbar-title>
-          {{ name }} -- {{ type }}
+          {{ name }}
         </q-toolbar-title>
+        <img
+          src="/logo.png"
+          style="height: 40px; max-width: 150px"
+        />
       </q-toolbar>
     </q-header>
 
