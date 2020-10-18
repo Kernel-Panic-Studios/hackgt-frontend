@@ -78,7 +78,6 @@ export default {
   },
   mounted() {
     this.newId = null;
-    console.log(this.family);
   },
   methods: {
     login() {
