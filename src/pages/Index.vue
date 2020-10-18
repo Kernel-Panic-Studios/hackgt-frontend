@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <h2>Dashboard page for the {{ type }}</h2>
+    <h2>Dashboard Page</h2>
     <div class="q-pa-md">
       <div class="row justify-center q-gutter-sm" v-if="type == 'family'">
         <q-intersection
@@ -76,7 +76,7 @@ const organizationOptions = [
     link: "/organization/child/events"
   },
   {
-    title: "Donate",
+    title: "Donations",
     icon: "card_giftcard",
     link: "/organization/child/donate"
   }
@@ -130,8 +130,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .cards {
-//   height: 250px;
-//   width: 30%;
-// }
+h2 {
+  text-decoration: underline;
+}
 </style>
