@@ -31,7 +31,7 @@
           filled
           type="name"
           v-model="name"
-          label="Your name *"
+          label="Name"
           hint="name"
           lazy-rules
         />
