@@ -51,7 +51,7 @@
 
         <q-uploader
           :field-name="email.replace('.', '-')"
-          url="https://hackgt.azurewebsites.net/upload"
+          url="http://localhost:5000/upload"
           @uploaded="uploaded"
           style="width: 100%; height:200px"
           label="Profile Picture"
@@ -107,7 +107,7 @@ export default {
       console.log("hi");
       axios
         .post(
-          "https://hackgt.azurewebsites.net/" + this.enteredType.toLowerCase(),
+          "http://localhost:5000/" + this.enteredType.toLowerCase(),
           {
             email: this.email,
             password: this.password,

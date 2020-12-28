@@ -63,7 +63,7 @@ export default {
     login() {
       console.log("hi");
       axios
-        .post("https://hackgt.azurewebsites.net/login", {
+        .post("http://localhost:5000/login", {
           email: this.email,
           password: this.password,
           type: this.enteredType.toLowerCase()

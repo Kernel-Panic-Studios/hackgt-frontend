@@ -70,7 +70,7 @@ export default {
         this.username = this.family.email;
       }
       axios
-        .post("https://hackgt.azurewebsites.net/chat", {
+        .post("http://localhost:5000/chat", {
           child: this.child.id,
           family: this.family.email
         })
@@ -103,7 +103,7 @@ export default {
         sender = this.child.id;
       }
       axios
-        .post("https://hackgt.azurewebsites.net/chat/send", {
+        .post("http://localhost:5000/chat/send", {
           child: this.child.id,
           family: this.family.email,
           sender: sender,

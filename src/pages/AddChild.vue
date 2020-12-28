@@ -24,7 +24,7 @@
 
           <q-uploader
             :field-name="email.replace('.', '-') + '-' + id"
-            url="https://hackgt.azurewebsites.net/upload"
+            url="http://localhost:5000/upload"
             @uploaded="uploaded"
             style="width: 100%; height:200px"
             label="Profile Picture"
@@ -72,7 +72,7 @@ export default {
     createChild() {
       console.log(this.email);
       axios
-        .post("https://hackgt.azurewebsites.net/child", {
+        .post("http://localhost:5000/child", {
           name: this.name,
           id: this.id,
           organization: this.email,

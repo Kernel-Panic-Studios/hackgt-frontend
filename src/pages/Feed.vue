@@ -30,7 +30,7 @@
       </div>
       <q-uploader
         :field-name="fileData"
-        url="https://hackgt.azurewebsites.net/upload"
+        url="http://localhost:5000/upload"
         @uploaded="uploaded"
         style="max-width: 300px"
         auto-upload
@@ -61,7 +61,7 @@ export default {
       this.organization = this.$q.localStorage.getItem('organization');
       this.fileData = this.child.name + this.family.email.replace('.', '-') + Date.now().toString();
       axios
-        .get("https://hackgt.azurewebsites.net/feed/" + this.child.id)
+        .get("http://localhost:5000/feed/" + this.child.id)
         .then(response => {
           this.posts = response.data;
           console.log(this.posts)
@@ -101,7 +101,7 @@ export default {
 
       console.log(sender);
       axios
-        .post("https://hackgt.azurewebsites.net/post", {
+        .post("http://localhost:5000/post", {
           child: this.child.id,
           family: this.family.email,
           organization: this.organization.email,

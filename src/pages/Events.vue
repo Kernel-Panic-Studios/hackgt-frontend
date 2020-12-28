@@ -50,7 +50,7 @@ export default {
       this.child = this.$q.localStorage.getItem("child");
       this.type = this.$q.localStorage.getItem("type");
       axios
-        .get("https://hackgt.azurewebsites.net/event/" + this.child.id)
+        .get("http://localhost:5000/event/" + this.child.id)
         .then(response => {
           this.events = response.data;
           console.log(this.events);

@@ -87,7 +87,7 @@ export default {
         return;
       }
       axios
-        .post("https://hackgt.azurewebsites.net/login", {
+        .post("http://localhost:5000/login", {
           id: this.newId,
           organization: this.$q.localStorage.getItem("organization").email,
           type: "child"
@@ -113,7 +113,7 @@ export default {
     },
     viewChild() {
       axios
-        .get("https://hackgt.azurewebsites.net/child/" + this.child.id)
+        .get("http://localhost:5000/child/" + this.child.id)
         .then(response => {
           this.data = response.data;
           if ("error" in this.data) {
@@ -138,7 +138,7 @@ export default {
     },
     getUser(type, email) {
       axios
-        .get("https://hackgt.azurewebsites.net/" + type + "/" + email)
+        .get("http://localhost:5000/" + type + "/" + email)
         .then(response => {
           if ("error" in response.data) {
             console.log("fail");

@@ -76,7 +76,7 @@ export default {
   },
   created: function() {
     axios
-      .get("https://hackgt.azurewebsites.net/organization")
+      .get("http://localhost:5000/organization")
       .then(response => {
         this.organizations = response.data;
         console.log(this.organizations);

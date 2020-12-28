@@ -81,7 +81,7 @@ export default {
     }
     axios
       .get(
-        "https://hackgt.azurewebsites.net/" +
+        "http://localhost:5000/" +
           this.$q.localStorage.getItem("type") +
           "/" +
           this.$q.localStorage.getItem(this.$q.localStorage.getItem("type"))

@@ -1,6 +1,6 @@
 export function getUserType(state) {
   //   this.$axios
-  //     .get("https://hackgt.azurewebsites.net/child/0")
+  //     .get("http://localhost:5000/child/0")
   //     .then(response => {
   //       this.data = response.data;
   //       return this.data.type
